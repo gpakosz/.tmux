@@ -19,10 +19,6 @@ Installation
     $ rm -rf .tmux
     $ git clone https://github.com/gpakosz/.tmux.git
     $ ln -s .tmux/.tmux.conf
-    $ touch ~/.tmux.conf.local
-
-Note: `tmux` 1.8 doesn't silently ignore sourcing missing files anymore. That's
-why you now have to `touch ~/.tmux.conf.local`.
 
 ### Accessing the Mac OSX clipboard from within tmux sessions
 
