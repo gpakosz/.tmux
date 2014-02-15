@@ -11,6 +11,7 @@ Features
  - [maximize any pane to a new window with `<prefix>+`](http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/) (tmux 1.6+)
  - mouse mode toggle with `<prefix>m`
  - automatic usage of `reattach-to-user-namespace` if available
+ - laptop battery status
 
 Installation
 ------------

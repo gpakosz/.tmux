@@ -1,0 +1,9 @@
+# use the powerline patched font variant of the theme
+#tmux_conf_theme=powerline_patched_font
+
+# use 5 hearts for the battery status
+#tmux_conf_battery_symbol=heart
+#tmux_conf_battery_symbol_count=5
+
+# or alternatively use an external tool, e.g. https://github.com/Goles/Battery
+#tmux_conf_battery='#(battery -t) '
