@@ -3,6 +3,8 @@
 
 Self-contained, opinionated `.tmux.conf` configuration file.
 
+![Screenshot](screenshot.png)
+
 Features
 --------
 
