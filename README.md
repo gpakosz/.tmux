@@ -5,12 +5,18 @@ Self-contained, opinionated `.tmux.conf` configuration file.
 
 ![Screenshot](screenshot.png)
 
+The `master` branch targets tmux 1.9+. You may want to use the `1.7` or `1.8`
+branch.
+
+**Please note that tmux 1.9 and 1.9a SEGFAULT when using the maximize pane
+feature. As a consequence, the feature is disabled for those version.**
+
 Features
 --------
 
  - `C-a` acts as secondary prefix, while keeping default `C-b` prefix
  - visual theme inspired by [powerline](https://github.com/Lokaltog/powerline)
- - [maximize any pane to a new window with `<prefix>+`](http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/) (tmux 1.6+)
+ - [maximize any pane to a new window with `<prefix>+`](http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/) (tmux 1.6+, except 1.9 and 1.9a)
  - mouse mode toggle with `<prefix>m`
  - automatic usage of `reattach-to-user-namespace` if available
  - laptop battery status
