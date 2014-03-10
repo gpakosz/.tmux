@@ -38,4 +38,4 @@ utility](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard) that makes
 If available, `reattach-to-user-namespace` will be automatically used by this
 `tmux` configuration. You just have to install it for instance with `brew`:
 
-    $ brew install reattach-to-user-namespsace
+    $ brew install reattach-to-user-namespace
