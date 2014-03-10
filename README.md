@@ -9,7 +9,7 @@ The `master` branch targets tmux 1.9+. You may want to use the `1.7` or `1.8`
 branch.
 
 **Please note that tmux 1.9 and 1.9a SEGFAULT when using the maximize pane
-feature. As a consequence, the feature is disabled for those version.**
+feature. As a consequence, the feature is disabled for those versions.**
 
 Features
 --------
