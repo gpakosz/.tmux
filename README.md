@@ -8,8 +8,10 @@ Self-contained, opinionated `.tmux.conf` configuration file.
 The `master` branch targets tmux 1.9+. You may want to use the `1.7` or `1.8`
 branch.
 
-**Please note that tmux 1.9 and 1.9a SEGFAULT when using the maximize pane
-feature. As a consequence, the feature is disabled for those versions.**
+**Please note that upstream tmux 1.9 and 1.9a SEGFAULT when using the maximize
+pane feature. Some Linux distributions like Debian provide a patched tmux 1.9a.
+Depending on whether or not the running tmux version has a buggy swap-pane
+command, the maximize pane feature may be disabled.**
 
 Features
 --------
