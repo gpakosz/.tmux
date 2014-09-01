@@ -40,8 +40,8 @@ enable and further customize the vi-style key bindings (see tmux manual).
 
 ### Configuring the visual theme
 
-You first need to install [fonts patched with powerline symbols] (see also
-[powerline manual]).
+You first need to install [fonts patched with powerline symbols][] (see also
+[powerline manual][]).
 
 Then edit your `~/.tmux.conf.local` file and uncomment the following line:
 
