@@ -25,6 +25,7 @@ Features
  - mouse mode toggle with `<prefix>m`
  - automatic usage of `reattach-to-user-namespace` if available
  - laptop battery status
+ - configurable new windows and panes behavior (optionally retain current path)
 
 Installation
 ------------
@@ -56,6 +57,15 @@ Edit your `~/.tmux.conf.local` file and uncomment the following lines:
 
     #tmux_conf_battery_symbol=heart
     #tmux_conf_battery_symbol_count=5
+
+See `~/.tmux.conf.local` for more details.
+
+### Configuring new windows and new panes creation
+
+Edit your `~/.tmux.conf.local` file and uncomment the following lines:
+
+    #tmux_conf_new_windows_retain_current_path=false
+    #tmux_conf_new_panes_retain_current_path=true
 
 See `~/.tmux.conf.local` for more details.
 
