@@ -5,6 +5,9 @@
 #tmux_conf_battery_symbol=heart
 #tmux_conf_battery_symbol_count=5
 
+# use the heat palette for the battery status
+#tmux_conf_battery_palette=heat
+
 # or alternatively use an external tool, e.g. https://github.com/Goles/Battery
 #tmux_conf_battery='#(battery -t) '
 

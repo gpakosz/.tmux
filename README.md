@@ -3,7 +3,7 @@
 
 Self-contained, opinionated `.tmux.conf` configuration file.
 
-![Screenshot](screenshot.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/553208/6979291/36999f48-d9e2-11e4-8815-449f7372b496.png)
 
 The `master` branch targets tmux 1.9+. You may want to use the `1.7` or `1.8`
 branch.
@@ -57,6 +57,11 @@ Edit your `~/.tmux.conf.local` file and uncomment the following lines:
 
     #tmux_conf_battery_symbol=heart
     #tmux_conf_battery_symbol_count=5
+
+To use a heat palette for the battery indicator, edit your `~/.tmux.conf.local`
+file and uncomment the following line:
+
+    #tmux_conf_battery_palette=heat
 
 See `~/.tmux.conf.local` for more details.
 
