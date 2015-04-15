@@ -81,6 +81,7 @@ utility](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard) that makes
 `pbcopy` and `pbpaste` work again within `tmux`.
 
 If available, `reattach-to-user-namespace` will be automatically used by this
-`tmux` configuration. You just have to install it for instance with `brew`:
+`tmux` configuration. You just have to install it for instance with
+[`brew`](http://brew.sh/):
 
     $ brew install reattach-to-user-namespace
