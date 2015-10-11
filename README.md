@@ -18,6 +18,11 @@ Features
  - automatic usage of `reattach-to-user-namespace` if available
  - laptop battery status
  - configurable new windows and panes behavior (optionally retain current path)
+ - [Facebook PathPicker][] integration if available
+ - [urlview][] integration if avaiable
+
+[Facebook PathPicker]: https://facebook.github.io/PathPicker/
+[urlview]: https://packages.debian.org/stable/misc/urlview
 
 The "maximize any pane to a new window with `<prefix>+`" feature is different
 from stock `resize-pane -Z` as it allows you to further split a maximized pane.
