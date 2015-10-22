@@ -117,7 +117,9 @@ file:
     echo "set -g history-limit 10000" >> ~/.tmux.conf.local
 
 You will also notice the default `.tmux.conf.local` file contains variables you
-can change to alter different behaviors.
+can change to alter different behaviors. Pressing `<prefix> e` will open
+`~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment
+variable (defaults to `vim` when empty).
 
 ### Enabling the Powerline like visual theme
 
@@ -143,44 +145,101 @@ To make use of these symbols, there are several options:
 
 Please see the [powerline manual] for further details.
 
-Then edit the `~/.tmux.conf.local` file and uncomment the following line:
+Then edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
+`tmux_conf_theme` variable:
 
-    #tmux_conf_theme=powerline_patched_font
+    tmux_conf_theme=powerline
+
+The possible values for `tmux_conf_theme` are `default` and `powerline`.
 
 [fonts patched with powerline symbols]: https://github.com/Lokaltog/powerline-fonts
 [powerline manual]: http://powerline.readthedocs.org/en/latest/installation.html#fonts-installation
 
 ### Configuring the battery indicator
 
-Edit the `~/.tmux.conf.local` file and uncomment the following lines:
+To enable or disable the battery indicator, edit the `~/.tmux.conf.local` file
+(`<prefix> e`) and adjust the `tmux_conf_theme_battery` variable:
 
-    #tmux_conf_battery_symbol=heart
-    #tmux_conf_battery_symbol_count=5
+    tmux_conf_theme_battery=enabled
 
-The possible values for `tmux_conf_battery_symbol` are `heart` or `block`
-(default).
+The possible values for `tmux_conf_theme_battery` are `enabled` (default) or
+`disabled`.
 
-To use the heat palette for the battery indicator, edit the `~/.tmux.conf.local`
-file and uncomment the following line:
+You can also customize the symbol used in the battery bar as well as their
+number by adjusting the `tmux_conf_battery_symbol` and
+`tmux_conf_battery_symbol_count` variables.
+
+    tmux_conf_battery_symbol=heart
+    tmux_conf_battery_symbol_count=5
+
+The possible values for `tmux_conf_battery_symbol` are `block` (default) or
+`block`. The default number of symbol displayed is `10`.
+
+To customize the battery bar colors, adjust the `tmux_conf_battery_palette`
+variable. You can either specify a `'colour_full_fg,colour_empty_fg,colour_bg'`
+colour triplet or one of the `heat` or `gradient` aliases. See tmux manual for
+colours definition:
+
+> The colour is one of: black, red, green, yellow, blue, magenta, cyan, white,
+> aixterm bright variants (if supported: brightred, brightgreen, and so on),
+> colour0 to colour255 from the 256-colour set, default, or a hexadecimal RGB
+> string such as `#ffffff`, which chooses the closest match from the default
+> 256-colour set.
+
+To use the heat palette for the battery indicator, use:
+
+    tmux_conf_battery_palette=heat
+
+To use the gradient palette for the battery indicator, use:
 
     #tmux_conf_battery_palette=heat
 
-To use the gradient palette for the battery indicator, edit the
-`~/.tmux.conf.local` file and uncomment the following line:
+To disable the battery charging (⚡ U+26A1) / discharging
+(🔋 U+1F50B) status, adjust the `tmux_conf_battery_status` variable:
 
-    #tmux_conf_battery_palette=heat
+    tmux_conf_battery_status=disabled
 
-To display the battery charging (⚡ U+26A1) / discharging (🔋 U+1F50B) status
-indicators, edit the `~/.tmux.conf.local` file and uncomment the following line:
+The possible values for `tmux_conf_battery_status` are `enabled` (defaut) or
+`disabled`.
 
-    #tmux_conf_battery_status=true
+### Configuring the date and time
+
+To disable the display of date and time, edit the `~/.tmux.conf.local` file
+(`<prefix> e`) and adjust the `tmux_conf_theme_date` and
+`tmux_conf_theme_time` variables:
+
+    tmux_conf_theme_time=disabled
+    tmux_conf_theme_date=disabled
+
+The possible values for `tmux_conf_theme_date` and `tmux_conf_theme_time` are
+`enabled` (defaut) or `disabled`.
+
+### Configuring the username and hostname
+
+To disable the display of username and hostname, edit the `~/.tmux.conf.local`
+file (`<prefix> e`) and adjust the `tmux_conf_theme_username` and
+`tmux_conf_theme_hostname` variables:
+
+    tmux_conf_theme_username=disabled tmux_conf_theme_hostname=disabled
+
+The possible values for `tmux_conf_theme_username` and
+`tmux_conf_theme_hostname` are `enabled` (default) or `disabled`, or `ssh`.
+
+When you set `tmux_conf_theme_username` or `tmux_conf_theme_hostname` to `ssh`,
+information is displayed only if you're inside an SSH session.
 
 ### Configuring new windows and new panes creation
 
-Edit the `~/.tmux.conf.local` file and uncomment the following lines:
+To configure whether creating new windows and new panes retains the current
+path, edit the `~/.tmux.conf.local` (`<prefix> e`) and adjust the
+`tmux_conf_new_windows_retain_current_path` and
+`tmux_conf_new_panes_retain_current_path` variables:
 
-    #tmux_conf_new_windows_retain_current_path=false
-    #tmux_conf_new_panes_retain_current_path=true
+    tmux_conf_new_windows_retain_current_path=false
+    tmux_conf_new_panes_retain_current_path=true
+
+The possible values for `tmux_conf_new_windows_retain_current_path` and
+`tmux_conf_new_panes_retain_current_path` are `true` or `false`.
 
 ### Accessing the Mac OSX clipboard from within tmux sessions
 
