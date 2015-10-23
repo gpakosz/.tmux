@@ -76,6 +76,10 @@ tmux_conf_new_windows_retain_current_path=false
 tmux_conf_new_panes_retain_current_path=true
 #tmux_conf_new_panes_retain_current_path=false
 
+# prompt for session name when creating a new session
+tmux_conf_new_session_prompt=false
+#tmux_conf_new_session_prompt=true
+
 # if you're running tmux within iTerm2
 #   - and tmux is 1.9 or 1.9a
 #   - and iTerm2 is configured to let option key act as +Esc
