@@ -155,6 +155,19 @@ The possible values for `tmux_conf_theme` are `default` and `powerline`.
 [fonts patched with powerline symbols]: https://github.com/Lokaltog/powerline-fonts
 [powerline manual]: http://powerline.readthedocs.org/en/latest/installation.html#fonts-installation
 
+### Configuring the prefix indicator
+
+To enable or disable the prefix indicator (whether the `<prefix>` key has been
+pressed), edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
+`tmux_conf_theme_prefix` variable:
+
+    tmux_conf_theme_prefix=enabled
+
+![image](https://cloud.githubusercontent.com/assets/553208/10802009/722de4a2-7dba-11e5-8361-8d024cd3aa45.png)
+
+The possible values for `tmux_conf_theme_prefix` are `enabled` or `disabled`
+(default).
+
 ### Configuring the battery indicator
 
 To enable or disable the battery indicator, edit the `~/.tmux.conf.local` file
