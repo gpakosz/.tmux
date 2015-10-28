@@ -4,6 +4,13 @@
 tmux_conf_theme=default
 #tmux_conf_theme=powerline
 
+# display an indicator in the status line when the prefix key has been pressed,
+# possible values are:
+#   - enabled
+#   - disabled
+tmux_conf_theme_prefix=disabled
+#tmux_conf_theme_prefix=enabled
+
 # display the battery information in the status line, possible values are:
 #   - enabled
 #   - disabled
