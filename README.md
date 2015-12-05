@@ -17,6 +17,7 @@ Features
  - mouse mode toggle with `<prefix> m`
  - automatic usage of `reattach-to-user-namespace` if available
  - laptop battery status
+ - optional highlight of focused pane (tmux `2.1`+)
  - configurable new windows and panes behavior (optionally retain current path)
  - [Facebook PathPicker][] integration if available
  - [Urlview][] integration if available
@@ -241,6 +242,18 @@ The possible values for `tmux_conf_theme_username` and
 When you set `tmux_conf_theme_username` or `tmux_conf_theme_hostname` to `ssh`,
 information is displayed only if you're inside an SSH session.
 
+### Configuring highlighting of the focused pane
+
+To highlight the focused pane, edit the `~/.tmux.conf.local` file (`<prefix> e`)
+and adjust the `tmux_conf_theme_highlight_focused_pane` variable:
+
+    tmux_conf_theme_highlight_focused_pane=enabled
+
+The possible values for `tmux_conf_theme_highlight_focused_pane` variable are
+`disabled` (default) or `enabled`.
+
+This feature is only available from tmux `2.1`.
+
 ### Configuring new windows and new panes creation
 
 To configure whether creating new windows and new panes retains the current
@@ -282,12 +295,12 @@ It is possible to use this configuration under Cygwin within Mintty, however
 support for Unicode symbols and emojis lacks behind Mac and Linux.
 
 Particularly, Mintty's text rendering is implemented with GDI which has
-limitations: 
+limitations:
 
 - color emojis are only available through DirectWrite starting with Windows 8.1
 - display double width symbols, like the battery discharging symbol indicator
   (U+1F50B) is buggy
-  
+
 As a consequence, under Cygwin, the battery charging (⚡ U+26A1) status indicator
 is rendered as a monochrome lightning bolt instead of a colorful emoji while the
 discharging (🔋 U+1F50B) one is simply disabled.
