@@ -179,6 +179,14 @@ To enable or disable the battery indicator, edit the `~/.tmux.conf.local` file
 The possible values for `tmux_conf_theme_battery` are `enabled` (default) or
 `disabled`.
 
+The battery indicator can either be a charging bar or a percentage which is
+controlled by the `tmux_conf_battery_style` variable:
+
+    tmux_conf_battery_style=bar
+
+The possible values for `tmux_conf_battery_style` are `bar` (default) or
+`percentage`.
+
 You can also customize the symbol used in the battery bar as well as their
 number by adjusting the `tmux_conf_battery_symbol` and
 `tmux_conf_battery_symbol_count` variables.

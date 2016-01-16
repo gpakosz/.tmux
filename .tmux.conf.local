@@ -17,6 +17,12 @@ tmux_conf_theme_prefix=disabled
 tmux_conf_theme_battery=enabled
 #tmux_conf_theme_battery=disabled
 
+# style to use for the battery status, possible values are:
+#   - bar
+#   - percentage
+tmux_conf_battery_style=bar
+#tmux_conf_battery_style=percentage
+
 # symbols to use for battery status, possible values are:
 #   - block
 #   - heart
