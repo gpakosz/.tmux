@@ -38,7 +38,7 @@ This configuration uses the following bindings:
  - `<prefix> Tab` brings you to the last active window
  - `<prefix> h`, `<prefix> j`, `<prefix> k` and `<prefix> l` let you navigate
    panes ala Vim
- - `<prefix> H`, `<prefix> J`, `<prefix>` K`, `<prefix> L` let you resize panes
+ - `<prefix> H`, `<prefix> J`, `<prefix> K`, `<prefix> L` let you resize panes
  - `<prefix> <` and `<prefix> >` let you swap panes
  - `<prefix> +` maximizes the current pane to a new window
  - `<prefix> m` toggles mouse mode on or off
