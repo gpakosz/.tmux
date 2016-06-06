@@ -195,7 +195,7 @@ number by adjusting the `tmux_conf_battery_symbol` and
     tmux_conf_battery_symbol_count=5
 
 The possible values for `tmux_conf_battery_symbol` are `block` (default) or
-`block`. The default number of symbol displayed is `10`.
+`heart`. The default number of symbol displayed is `10`.
 
 To customize the battery bar colors, adjust the `tmux_conf_battery_palette`
 variable. You can either specify a `'colour_full_fg,colour_empty_fg,colour_bg'`
