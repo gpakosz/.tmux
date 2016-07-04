@@ -91,7 +91,7 @@ tmux_conf_theme_highlight_focused_pane=disabled
 tmux_conf_new_windows_retain_current_path=false
 #tmux_conf_new_windows_retain_current_path=true
 
-# should new panes reatin current path, possible values are:
+# should new panes retain current path, possible values are:
 #   - true
 #   - false
 tmux_conf_new_panes_retain_current_path=true
