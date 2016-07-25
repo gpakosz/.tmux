@@ -38,7 +38,7 @@ This configuration uses the following bindings:
  - `<prefix> Tab` brings you to the last active window
  - `<prefix> h`, `<prefix> j`, `<prefix> k` and `<prefix> l` let you navigate
    panes ala Vim
- - `<prefix> H`, `<prefix> J`, `<prefix>` K`, `<prefix> L` let you resize panes
+ - `<prefix> H`, `<prefix> J`, `<prefix> K`, `<prefix> L` let you resize panes
  - `<prefix> <` and `<prefix> >` let you swap panes
  - `<prefix> +` maximizes the current pane to a new window
  - `<prefix> m` toggles mouse mode on or off
@@ -50,7 +50,7 @@ This configuration uses the following bindings:
  - `<prefix> P` lets you choose the paste-buffer to paste from
  - `C-l` clears both the screen and the history
 
-Additionaly, `vi-choice`, `vi-edit` and `vi-copy` named tables are adjusted
+Additionally, `vi-choice`, `vi-edit` and `vi-copy` named tables are adjusted
    to closely match [my own Vim configuration][]
 
 [my own Vim configuration]: https://github.com/gpakosz/.vim.git
@@ -59,7 +59,7 @@ Bindings for the `vi-choice` mode-table:
 
 - `h` collapses the current tree node
 - `l` expands the current tree node
-- `H` collapes all the tree nodes
+- `H` collapses all the tree nodes
 - `L` expands all the tree nodes
 - `K` jumps to the start of list (tmux 2.0+)
 - `L` jumps to the end of list (tmux 2.0+)
@@ -124,7 +124,7 @@ variable (defaults to `vim` when empty).
 
 ### Enabling the Powerline like visual theme
 
-Powerline originated as a status-line plugin for Vim. Its popular eye-cacthing
+Powerline originated as a status-line plugin for Vim. Its popular eye-catching
 look is based on the use of special symbols: <img width="80" alt="Powerline Symbols" style="vertical-align: middle;" src="https://cloud.githubusercontent.com/assets/553208/10687156/1b76dda6-796b-11e5-83a1-1634337c4571.png" />
 
 To make use of these symbols, there are several options:
@@ -195,7 +195,7 @@ number by adjusting the `tmux_conf_battery_symbol` and
     tmux_conf_battery_symbol_count=5
 
 The possible values for `tmux_conf_battery_symbol` are `block` (default) or
-`block`. The default number of symbol displayed is `10`.
+`heart`. The default number of symbol displayed is `10`.
 
 To customize the battery bar colors, adjust the `tmux_conf_battery_palette`
 variable. You can either specify a `'colour_full_fg,colour_empty_fg,colour_bg'`
@@ -221,7 +221,7 @@ To disable the battery charging (⚡ U+26A1) / discharging
 
     tmux_conf_battery_status=disabled
 
-The possible values for `tmux_conf_battery_status` are `enabled` (defaut) or
+The possible values for `tmux_conf_battery_status` are `enabled` (default) or
 `disabled`.
 
 ### Configuring the date and time
@@ -234,7 +234,7 @@ To disable the display of date and time, edit the `~/.tmux.conf.local` file
     tmux_conf_theme_date=disabled
 
 The possible values for `tmux_conf_theme_date` and `tmux_conf_theme_time` are
-`enabled` (defaut) or `disabled`.
+`enabled` (default) or `disabled`.
 
 ### Configuring the username and hostname
 
@@ -315,7 +315,7 @@ discharging (🔋 U+1F50B) one is simply disabled.
 
 Also, to get the battery charging status indicator displayed properly, you have
 to use [font linking]. Open `regedit.exe` then navigate to the registry key at
-`HKEY_LOCAL_MACHINE–\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink`
+`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink`
 and add a new entry for you preferred font to link it with the Segoe UI Symbol
 font.
 
