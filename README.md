@@ -3,26 +3,51 @@
 
 Self-contained, pretty and versatile `.tmux.conf` configuration file.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/553208/9889393/85e50e4e-5bfa-11e5-99d8-76572350803a.gif)
+![Screenshot](https://cloud.githubusercontent.com/assets/553208/19740585/85596a5a-9bbf-11e6-8aa1-7c8d9829c008.gif)
 
-The `master` branch targets tmux `HEAD`. You may want to use the `1.9`, `2.0` or
-`2.1` branch.
+Installation
+------------
+
+Requirements:
+
+  - tmux **`2.1+`** running inside Linux, Mac, OpenBSD or Cygwin
+  - outside of tmux, `$TERM` must be set to `xterm-256color`
+
+To install, run the following from your terminal:
+
+```
+$ cd
+$ git clone https://github.com/gpakosz/.tmux.git
+$ ln -s .tmux/.tmux.conf
+$ cp .tmux/.tmux.conf.local .
+```
+
+Then proceed to customize your `~/.tmux.conf.local` copy.
+
+If you're a Vim user, setting the `$EDITOR` environment variable to `vim` will
+enable and further customize the vi-style key bindings (see tmux manual).
 
 Features
 --------
 
  - `C-a` acts as secondary prefix, while keeping default `C-b` prefix
  - visual theme inspired by [Powerline][]
- - [maximize any pane to a new window with `<prefix> +`](http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/)
+ - [maximize any pane to a new window with `<prefix> +`][maximize-pane]
+ - SSH aware username and hostname status line information
  - mouse mode toggle with `<prefix> m`
- - automatic usage of `reattach-to-user-namespace` if available
- - laptop battery status
- - optional highlight of focused pane (tmux `2.1`+)
+ - automatic usage of [`reattach-to-user-namespace`][reattach-to-user-namespace]
+   if available
+ - laptop battery status line information
+ - uptime status line information
+ - optional highlight of focused pane (tmux `2.1+`)
  - configurable new windows and panes behavior (optionally retain current path)
+ - SSH aware split pane (reconnects to remote server, experimental)
  - [Facebook PathPicker][] integration if available
  - [Urlview][] integration if available
 
 [Powerline]: https://github.com/Lokaltog/powerline
+[maximize-pane]: http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/
+[reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [Facebook PathPicker]: https://facebook.github.io/PathPicker/
 [Urlview]: https://packages.debian.org/stable/misc/urlview
 
@@ -61,8 +86,8 @@ Bindings for the `vi-choice` mode-table:
 - `l` expands the current tree node
 - `H` collapses all the tree nodes
 - `L` expands all the tree nodes
-- `K` jumps to the start of list (tmux 2.0+)
-- `L` jumps to the end of list (tmux 2.0+)
+- `K` jumps to the start of list (tmux `2.0+`)
+- `L` jumps to the end of list (tmux `2.0+`)
 - `Escape` cancels the current operation
 
 Bindings for the `vi-edit` mode-table:
@@ -82,30 +107,18 @@ Bindings for the `vi-copy` mode-table:
 - `Escape` cancels the current operation
 
 The "maximize any pane to a new window with `<prefix> +`" feature is different
-from stock `resize-pane -Z` as it allows you to further split a maximized pane.
-Also, you can maximize a pane to a new window, then change window, then go back
-and the pane is still in maximized state in its own window. You can then
-minimize a pane by using `<prefix> +` either from the source window or the
-maximized window.
+from builtin `resize-pane -Z` as it allows you to further split a maximized
+pane. It's also more flexible by allowing you to maximize a pane to a new
+window, then change window, then go back and the pane is still in maximized
+state in its own window. You can then minimize a pane by using `<prefix> +`
+either from the source window or the maximized window.
 
 ![Maximize pane](https://cloud.githubusercontent.com/assets/553208/9890858/ee3c0ca6-5c02-11e5-890e-05d825a46c92.gif)
 
 Mouse mode allows you to set the active window, set the active pane, resize
-panes and select switch to copy-mode to select text.
+panes and automatically switches to copy-mode to select text.
 
 ![Mouse mode](https://cloud.githubusercontent.com/assets/553208/9890797/8dffe542-5c02-11e5-9c06-a25b452e6fcc.gif)
-
-Installation
-------------
-
-    $ cd
-    $ rm -rf .tmux
-    $ git clone https://github.com/gpakosz/.tmux.git
-    $ ln -s .tmux/.tmux.conf
-    $ cp .tmux/.tmux.conf.local .
-
-If you're a Vim user, setting the `$EDITOR` environment variable to `vim` will
-enable and further customize the vi-style key bindings (see tmux manual).
 
 Configuration
 -------------
@@ -113,16 +126,14 @@ Configuration
 While this configuration tries to bring sane default settings, you may want to
 customize it further to your needs. Instead of altering the `~/.tmux.conf` file
 and diverging from upstream, the proper way is to edit the `~/.tmux.conf.local`
-file:
+file.
 
-    echo "set -g history-limit 10000" >> ~/.tmux.conf.local
-
-You will also notice the default `.tmux.conf.local` file contains variables you
-can change to alter different behaviors. Pressing `<prefix> e` will open
+Please refer to the default `.tmux.conf.local` file to know more about variables
+you can adjust to alter different behaviors. Pressing `<prefix> e` will open
 `~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment
 variable (defaults to `vim` when empty).
 
-### Enabling the Powerline like visual theme
+### Enabling the Powerline look
 
 Powerline originated as a status-line plugin for Vim. Its popular eye-catching
 look is based on the use of special symbols: <img width="80" alt="Powerline Symbols" style="vertical-align: middle;" src="https://cloud.githubusercontent.com/assets/553208/10687156/1b76dda6-796b-11e5-83a1-1634337c4571.png" />
@@ -130,156 +141,68 @@ look is based on the use of special symbols: <img width="80" alt="Powerline Symb
 To make use of these symbols, there are several options:
 
 - use a font that already bundles those: this is e.g. the case of the
-  [2.010R-ro/1.030R-it version][source code pro] of the Source Code Pro] font
+  [2.030R-ro/1.050R-it version][source code pro] of the Source Code Pro] font
 - use a [pre-patched font][powerline patched fonts]
 - use your preferred font along with the [Powerline font][powerline font] (that
-  only contains the Powerline symbols): this highly depends on your operating
-  system and your terminal emulator
+  only contains the Powerline symbols): [this highly depends on your operating
+  system and your terminal emulator][terminal support]
 - [patch your preferred font][powerline font patcher] by adding the missing
   Powerline symbols: this is the most difficult way and is no more documented in
-  the Powerline manual
+  the [Powerline manual]
 
-[source code pro]: https://github.com/adobe-fonts/source-code-pro/releases/tag/2.010R-ro%2F1.030R-it
+[source code pro]: https://github.com/adobe-fonts/source-code-pro/releases/tag/2.030R-ro/1.050R-it
 [powerline patched fonts]: https://github.com/powerline/fonts
 [powerline font]: https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 [powerline font patcher]: https://github.com/powerline/fontpatcher
+[terminal support]: http://powerline.readthedocs.io/en/master/usage.html#usage-terminal-emulators
+[Powerline manual]: http://powerline.readthedocs.org/en/latest/installation.html#fonts-installation
 
-Please see the [powerline manual] for further details.
+Please see the [Powerline manual] for further details.
 
-Then edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
-`tmux_conf_theme` variable:
+Then edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the following
+variables:
 
-    tmux_conf_theme=powerline
+```
+tmux_conf_theme_left_separator_main=''
+tmux_conf_theme_left_separator_sub=''
+tmux_conf_theme_right_separator_main=''
+tmux_conf_theme_right_separator_sub=''
+```
+### Configuring the status line
 
-The possible values for `tmux_conf_theme` are `default` and `powerline`.
+Contrary to the first iterations of this configuration, by now you have total
+control on the content and order of `status-left` and `status-right`.
 
-[fonts patched with powerline symbols]: https://github.com/Lokaltog/powerline-fonts
-[powerline manual]: http://powerline.readthedocs.org/en/latest/installation.html#fonts-installation
+Edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
+`tmux_conf_theme_status_left` and `tmux_conf_theme_status_right` variables to
+your own preferences.
 
-### Configuring the prefix indicator
+This configuration supports the following builtin variables:
 
-To enable or disable the prefix indicator (whether the `<prefix>` key has been
-pressed), edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
-`tmux_conf_theme_prefix` variable:
-
-    tmux_conf_theme_prefix=enabled
-
-![image](https://cloud.githubusercontent.com/assets/553208/10802009/722de4a2-7dba-11e5-8361-8d024cd3aa45.png)
-
-The possible values for `tmux_conf_theme_prefix` are `enabled` or `disabled`
-(default).
-
-### Configuring the battery indicator
-
-To enable or disable the battery indicator, edit the `~/.tmux.conf.local` file
-(`<prefix> e`) and adjust the `tmux_conf_theme_battery` variable:
-
-    tmux_conf_theme_battery=enabled
-
-The possible values for `tmux_conf_theme_battery` are `enabled` (default) or
-`disabled`.
-
-The battery indicator can either be a charging bar or a percentage which is
-controlled by the `tmux_conf_battery_style` variable:
-
-    tmux_conf_battery_style=bar
-
-The possible values for `tmux_conf_battery_style` are `bar` (default) or
-`percentage`.
-
-You can also customize the symbol used in the battery bar as well as their
-number by adjusting the `tmux_conf_battery_symbol` and
-`tmux_conf_battery_symbol_count` variables.
-
-    tmux_conf_battery_symbol=heart
-    tmux_conf_battery_symbol_count=5
-
-The possible values for `tmux_conf_battery_symbol` are `block` (default) or
-`heart`. The default number of symbol displayed is `10`.
-
-To customize the battery bar colors, adjust the `tmux_conf_battery_palette`
-variable. You can either specify a `'colour_full_fg,colour_empty_fg,colour_bg'`
-colour triplet or one of the `heat` or `gradient` aliases. See tmux manual for
-colours definition:
-
-> The colour is one of: black, red, green, yellow, blue, magenta, cyan, white,
-> aixterm bright variants (if supported: brightred, brightgreen, and so on),
-> colour0 to colour255 from the 256-colour set, default, or a hexadecimal RGB
-> string such as `#ffffff`, which chooses the closest match from the default
-> 256-colour set.
-
-To use the heat palette for the battery indicator, use:
-
-    tmux_conf_battery_palette=heat
-
-To use the gradient palette for the battery indicator, use:
-
-    #tmux_conf_battery_palette=heat
-
-To disable the battery charging (⚡ U+26A1) / discharging
-(🔋 U+1F50B) status, adjust the `tmux_conf_battery_status` variable:
-
-    tmux_conf_battery_status=disabled
-
-The possible values for `tmux_conf_battery_status` are `enabled` (default) or
-`disabled`.
-
-### Configuring the date and time
-
-To disable the display of date and time, edit the `~/.tmux.conf.local` file
-(`<prefix> e`) and adjust the `tmux_conf_theme_date` and
-`tmux_conf_theme_time` variables:
-
-    tmux_conf_theme_time=disabled
-    tmux_conf_theme_date=disabled
-
-The possible values for `tmux_conf_theme_date` and `tmux_conf_theme_time` are
-`enabled` (default) or `disabled`.
-
-### Configuring the username and hostname
-
-To disable the display of username and hostname, edit the `~/.tmux.conf.local`
-file (`<prefix> e`) and adjust the `tmux_conf_theme_username` and
-`tmux_conf_theme_hostname` variables:
-
-    tmux_conf_theme_username=disabled tmux_conf_theme_hostname=disabled
-
-The possible values for `tmux_conf_theme_username` and
-`tmux_conf_theme_hostname` are `enabled` (default) or `disabled`, or `ssh`.
-
-When you set `tmux_conf_theme_username` or `tmux_conf_theme_hostname` to `ssh`,
-information is displayed only if you're inside an SSH session.
-
-### Configuring highlighting of the focused pane
-
-To highlight the focused pane, edit the `~/.tmux.conf.local` file (`<prefix> e`)
-and adjust the `tmux_conf_theme_highlight_focused_pane` variable:
-
-    tmux_conf_theme_highlight_focused_pane=enabled
-
-The possible values for `tmux_conf_theme_highlight_focused_pane` variable are
-`disabled` (default) or `enabled`.
-
-This feature is only available from tmux `2.1`.
-
-### Configuring new windows and new panes creation
-
-To configure whether creating new windows and new panes retains the current
-path, edit the `~/.tmux.conf.local` (`<prefix> e`) and adjust the
-`tmux_conf_new_windows_retain_current_path` and
-`tmux_conf_new_panes_retain_current_path` variables:
-
-    tmux_conf_new_windows_retain_current_path=false
-    tmux_conf_new_panes_retain_current_path=true
-
-The possible values for `tmux_conf_new_windows_retain_current_path` and
-`tmux_conf_new_panes_retain_current_path` are `true` or `false`.
+ - `#{battery_bar}`: horizontal battery charge bar
+ - `#{battery_percentage}`: battery percentage
+ - `#{battery_status}`: is battery charging or discharging?
+ - `#{battery_vbar}`: vertical battery charge bar
+ - `#{circled_session_name}`: circled session number, up to 20
+ - `#{hostname}`: SSH aware hostname information
+ - `#{hostname_ssh}`: SSH aware hostname information, blank when no SSH
+   connection detected
+ - `#{pairing}`: is session attached to more than one client?
+ - `#{prefix}`: is prefix being depressed?
+ - `#{root}`: is current user root?
+ - `#{uptime_d}`: uptime days
+ - `#{uptime_h}`: uptime hours
+ - `#{uptime_m}`: uptime minutes
+ - `#{uptime_s}`: uptime seconds
+ - `#{username}`: SSH aware username information
+ - `#{username_ssh}`: SSH aware username information, blank when no SSH
+   connection detected
 
 ### Accessing the Mac OSX clipboard from within tmux sessions
 
 [Chris Johnsen created the `reattach-to-user-namespace`
-utility](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard) that makes
-`pbcopy` and `pbpaste` work again within tmux.
+utility][reattach-to-user-namespace] that makes `pbcopy` and `pbpaste` work
+again within tmux.
 
 To install `reattach-to-user-namespace`, use either [MacPorts][] or
 [Homebrew][]:
@@ -297,7 +220,7 @@ Once installed, `reattach-to-usernamespace` will be automatically detected.
 
 ### Using the configuration under Cygwin within Mintty
 
-![image](https://cloud.githubusercontent.com/assets/553208/10802824/32539f02-7dbf-11e5-9377-2008192a7396.png)
+![cygwin](https://cloud.githubusercontent.com/assets/553208/19741789/67a3f3d8-9bc2-11e6-9ecc-499fc0228ee6.png)
 
 It is possible to use this configuration under Cygwin within Mintty, however
 support for Unicode symbols and emojis lacks behind Mac and Linux.
@@ -306,19 +229,15 @@ Particularly, Mintty's text rendering is implemented with GDI which has
 limitations:
 
 - color emojis are only available through DirectWrite starting with Windows 8.1
-- display double width symbols, like the battery discharging symbol indicator
+- display of double width symbols, like the battery discharging symbol indicator
   (U+1F50B) is buggy
 
-As a consequence, under Cygwin, the battery charging (⚡ U+26A1) status indicator
-is rendered as a monochrome lightning bolt instead of a colorful emoji while the
-discharging (🔋 U+1F50B) one is simply disabled.
-
-Also, to get the battery charging status indicator displayed properly, you have
-to use [font linking]. Open `regedit.exe` then navigate to the registry key at
+To get Unicode symbols displayed properly, you have to use [font linking].
+Open `regedit.exe` then navigate to the registry key at
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink`
 and add a new entry for you preferred font to link it with the Segoe UI Symbol
 font.
 
-![image](https://cloud.githubusercontent.com/assets/553208/10802432/26341fbe-7dbd-11e5-9be9-585348fe3c2c.png)
+![regedit](https://cloud.githubusercontent.com/assets/553208/19741304/71a2f3ae-9bc0-11e6-96aa-4c09a812c313.png)
 
 [font linking]: https://msdn.microsoft.com/en-us/goglobal/bb688134.aspx
