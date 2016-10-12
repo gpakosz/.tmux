@@ -124,7 +124,7 @@ variable (defaults to `vim` when empty).
 
 ### Enabling the Powerline like visual theme
 
-Powerline originated as a status-line plugin for Vim. Its popular eye-cacthing
+Powerline originated as a status-line plugin for Vim. Its popular eye-catching
 look is based on the use of special symbols: <img width="80" alt="Powerline Symbols" style="vertical-align: middle;" src="https://cloud.githubusercontent.com/assets/553208/10687156/1b76dda6-796b-11e5-83a1-1634337c4571.png" />
 
 To make use of these symbols, there are several options:
