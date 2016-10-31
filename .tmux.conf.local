@@ -138,6 +138,7 @@ tmux_conf_theme_right_separator_sub='|'
 #   - separate subsections with ','
 #   - built-in variables are:
 #     - #{battery_bar}
+#     - #{battery_hbar}
 #     - #{battery_percentage}
 #     - #{battery_status}
 #     - #{battery_vbar}
@@ -201,6 +202,13 @@ tmux_conf_battery_bar_length='auto'
 #   - 'colour_full_fg,colour_empty_fg,colour_bg'
 tmux_conf_battery_bar_palette='gradient'
 #tmux_conf_battery_bar_palette='#d70000,#e4e4e4,#000000'   # red, white, black
+
+# battery hbar palette, possible values are:
+#   - gradient (default)
+#   - heat
+#   - 'colour_low,colour_half,colour_full'
+tmux_conf_battery_hbar_palette='gradient'
+#tmux_conf_battery_hbar_palette='#d70000,#ff5f00,#5fff00'  # red, orange, green
 
 # battery vbar palette, possible values are:
 #   - gradient (default)
