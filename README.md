@@ -13,12 +13,13 @@ Requirements:
   - tmux **`2.1+`** running inside Linux, Mac, OpenBSD or Cygwin
   - outside of tmux, `$TERM` must be set to `xterm-256color`
 
-To install, run the following from your terminal:
+To install, run the following from your terminal: (you may want to backup your
+existing `~/.tmux.conf` first)
 
 ```
 $ cd
 $ git clone https://github.com/gpakosz/.tmux.git
-$ ln -s .tmux/.tmux.conf
+$ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 ```
 
