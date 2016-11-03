@@ -217,6 +217,13 @@ tmux_conf_battery_status_discharging='🔋'  # U+1F50B
 tmux_conf_theme_clock_colour='#00afff'  # light blue
 tmux_conf_theme_clock_style='24'
 
+# sane scrolling
+set-option -g mouse on
+set -g default-terminal "screen-256color"
+
+#copy paste
+#bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+
 
 # ------------------------------------------------------------------------------
 # this is the place to override or undo settings
