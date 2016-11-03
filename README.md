@@ -188,6 +188,7 @@ This configuration supports the following builtin variables:
  - `#{hostname}`: SSH aware hostname information
  - `#{hostname_ssh}`: SSH aware hostname information, blank when no SSH
    connection detected
+ - `#{loadavg}`: load average
  - `#{pairing}`: is session attached to more than one client?
  - `#{prefix}`: is prefix being depressed?
  - `#{root}`: is current user root?
