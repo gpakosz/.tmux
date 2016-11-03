@@ -143,8 +143,9 @@ tmux_conf_theme_right_separator_sub='|'
 #     - #{battery_status}
 #     - #{battery_vbar}
 #     - #{circled_session_name}
-#     - #{hostname}
 #     - #{hostname_ssh}
+#     - #{hostname}
+#     - #{loadavg}
 #     - #{pairing}
 #     - #{prefix}
 #     - #{root}
