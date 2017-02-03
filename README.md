@@ -52,6 +52,12 @@ Features
 [Facebook PathPicker]: https://facebook.github.io/PathPicker/
 [Urlview]: https://packages.debian.org/stable/misc/urlview
 
+How <prefix> is used:
+
+ - `<prefix>` is performed by typing Ctrl + a. 
+ - `<prefix> e` is `Ctrl + a` followd by `e`
+ - `<prefix> C-c` is `Ctrl + a` (hold Ctrl) press `c`
+ 
 This configuration uses the following bindings:
 
  - `<prefix> C-c` creates a new session
