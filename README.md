@@ -52,6 +52,14 @@ Features
 [Facebook PathPicker]: https://facebook.github.io/PathPicker/
 [Urlview]: https://packages.debian.org/stable/misc/urlview
 
+tmux may be controlled from an attached client by using a key combination of a
+prefix key, followed by a command key. This configuration uses `C-a` as a
+secondary prefix while keeping `C-b` as the default prefix. In the following
+list of key bindings:
+  - `<prefix>` means you have to either hit <kbd>Ctrl</kbd> + <kbd>a</kbd> or <kbd>Ctrl</kbd> + <kbd>b</kbd>
+  - `<prefix> c` means you have to hit <kbd>Ctrl</kbd> + <kbd>a</kbd> or <kbd>Ctrl</kbd> + <kbd>b</kbd> followed by <kbd>c</kbd>
+  - `<prefix> C-c` means you have to hit <kbd>Ctrl</kbd> + <kbd>a</kbd> or <kbd>Ctrl</kbd> + <kbd>b</kbd> followed by <kbd>Ctrl</kbd> + <kbd>c</kbd>
+
 This configuration uses the following bindings:
 
  - `<prefix> C-c` creates a new session
