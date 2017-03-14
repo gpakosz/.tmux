@@ -10,7 +10,7 @@ Installation
 
 Requirements:
 
-  - tmux **`2.1+`** running inside Linux, Mac, OpenBSD or Cygwin
+  - tmux **`>= 2.1`** running inside Linux, Mac, OpenBSD or Cygwin
   - outside of tmux, `$TERM` must be set to `xterm-256color`
 
 To install, run the following from your terminal: (you may want to backup your
@@ -23,10 +23,45 @@ $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 ```
 
-Then proceed to customize your `~/.tmux.conf.local` copy.
+Then proceed to [customize] your `~/.tmux.conf.local` copy.
+
+[customize]: #enabling-the-powerline-look
 
 If you're a Vim user, setting the `$EDITOR` environment variable to `vim` will
 enable and further customize the vi-style key bindings (see tmux manual).
+
+Troubleshooting
+---------------
+
+ - **I'm running tmux `HEAD` and this don't work properly, what should I do?**
+
+   Please open an issue describing what doesn't work with upcoming tmux. I'll do
+   my best to address it.
+
+ - **Status line is broken and/or gets duplicated at the bottom of the screen.
+   What gives?**
+
+   This particularly happens on Linux when the distribution provides a version
+   of glib that received Unicode 9.0 upgrades (glib `>= 2.50.1`) while providing
+   a version of glibc that didn't (`< 2.26`). You may also configure `LC_CTYPE`
+   to use an `UTF-8` locale. Typically VTE based terminal emulators rely on
+   glib's `g_unichar_iswide()` function while tmux relies on glibc's `wcwidth()`
+   function. When these two functions disagree, display gets messed up.
+
+   This can also happen on MacOS when using iTerm2 and "Use Unicode version 9
+   character widths" is enabled in `Preferences... > Profiles > Text`
+
+   For that reason, the default `/.tmux.conf.local` file stopped using Unicode
+   characters for which width changed in between Unicode 8.0 and 9.0 standards,
+   as well as Emojis.
+
+ - **I installed Powerline and/or (patched) fonts but can't see Powerline
+   symbols.**
+
+   First, you don't need to install Powerline. You only need fonts patched with
+   Powerline symbols or the standalone `PowerlineSymbols.otf` font. Then make
+   sure your `~/.tmux.conf.local` copy uses the right code points for
+   `tmux_conf_theme_left_separator_XXX` values.
 
 Features
 --------
@@ -40,7 +75,7 @@ Features
    if available
  - laptop battery status line information
  - uptime status line information
- - optional highlight of focused pane (tmux `2.1+`)
+ - optional highlight of focused pane (tmux `>= 2.1`)
  - configurable new windows and panes behavior (optionally retain current path)
  - SSH aware split pane (reconnects to remote server, experimental)
  - [Facebook PathPicker][] integration if available
