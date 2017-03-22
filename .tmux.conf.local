@@ -90,7 +90,7 @@ tmux_conf_theme_status_attr='none'
 
 # window status style
 #   - built-in variables are:
-#     - #{circled_window_index}
+#   - #{circled_window_index}
 tmux_conf_theme_window_status_fg='#8a8a8a'              # light gray
 tmux_conf_theme_window_status_bg='#080808'              # dark gray
 tmux_conf_theme_window_status_attr='none'
@@ -100,7 +100,7 @@ tmux_conf_theme_window_status_format='#I #W'
 
 # window current status style
 #   - built-in variables are:
-#     - #{circled_window_index}
+#   - #{circled_window_index}
 tmux_conf_theme_window_status_current_fg='#000000'      # black
 tmux_conf_theme_window_status_current_bg='#00afff'      # light blue
 tmux_conf_theme_window_status_current_attr='bold'
