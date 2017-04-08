@@ -33,7 +33,7 @@ enable and further customize the vi-style key bindings (see tmux manual).
 Troubleshooting
 ---------------
 
- - **I'm running tmux `HEAD` and this don't work properly, what should I do?**
+ - **I'm running tmux `HEAD` and things don't work properly. What should I do?**
 
    Please open an issue describing what doesn't work with upcoming tmux. I'll do
    my best to address it.
