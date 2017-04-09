@@ -43,10 +43,11 @@ Troubleshooting
 
    This particularly happens on Linux when the distribution provides a version
    of glib that received Unicode 9.0 upgrades (glib `>= 2.50.1`) while providing
-   a version of glibc that didn't (`< 2.26`). You may also configure `LC_CTYPE`
-   to use an `UTF-8` locale. Typically VTE based terminal emulators rely on
-   glib's `g_unichar_iswide()` function while tmux relies on glibc's `wcwidth()`
-   function. When these two functions disagree, display gets messed up.
+   a version of glibc that didn't (glibc `< 2.26`). You may also configure
+   `LC_CTYPE` to use an `UTF-8` locale. Typically VTE based terminal emulators
+   rely on glib's `g_unichar_iswide()` function while tmux relies on glibc's
+   `wcwidth()` function. When these two functions disagree, display gets messed
+   up.
 
    This can also happen on MacOS when using iTerm2 and "Use Unicode version 9
    character widths" is enabled in `Preferences... > Profiles > Text`
@@ -62,6 +63,17 @@ Troubleshooting
    Powerline symbols or the standalone `PowerlineSymbols.otf` font. Then make
    sure your `~/.tmux.conf.local` copy uses the right code points for
    `tmux_conf_theme_left_separator_XXX` values.
+
+ - **I'm using Bash On Windows (WSL) and colors are broken.**
+
+   There is currently a [bug][1681] in the new console powering Bash On Windows
+   preventing text attributes (bold, underscore, ...) to combine properly with
+   colors. The workaround is to search your `~/.tmux.conf.local` copy and
+   replace attributes with `'none'`. The alternative is to use the
+   [Mintty terminal for WSL][wsltty].
+
+[1681]: https://github.com/Microsoft/BashOnWindows/issues/1681
+[wsltty]: https://github.com/mintty/wsltty
 
 Features
 --------
