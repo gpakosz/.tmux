@@ -234,6 +234,7 @@ tmux_conf_theme_clock_style='24'
 # in copy mode, copying selection also copies to the OS clipboard
 #   - true
 #   - false (default)
+# on macOS, this require installing reattach-to-user-namespace, see README.md
 tmux_conf_copy_to_os_clipboard=false
 
 
