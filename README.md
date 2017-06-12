@@ -53,7 +53,7 @@ Troubleshooting
    This can also happen on macOS when using iTerm2 and "Use Unicode version 9
    character widths" is enabled in `Preferences... > Profiles > Text`
 
-   For that reason, the default `/.tmux.conf.local` file stopped using Unicode
+   For that reason, the default `~/.tmux.conf.local` file stopped using Unicode
    characters for which width changed in between Unicode 8.0 and 9.0 standards,
    as well as Emojis.
 
@@ -187,10 +187,10 @@ customize it further to your needs. Instead of altering the `~/.tmux.conf` file
 and diverging from upstream, the proper way is to edit the `~/.tmux.conf.local`
 file.
 
-Please refer to the default `.tmux.conf.local` file to know more about variables
-you can adjust to alter different behaviors. Pressing `<prefix> e` will open
-`~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment
-variable (defaults to `vim` when empty).
+Please refer to the default `~/.tmux.conf.local` file to know more about
+variables you can adjust to alter different behaviors. Pressing `<prefix> e`
+will open `~/.tmux.conf.local` with the editor defined by the `$EDITOR`
+environment variable (defaults to `vim` when empty).
 
 ### Enabling the Powerline look
 
