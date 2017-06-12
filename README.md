@@ -50,7 +50,7 @@ Troubleshooting
    `wcwidth()` function. When these two functions disagree, display gets messed
    up.
 
-   This can also happen on MacOS when using iTerm2 and "Use Unicode version 9
+   This can also happen on macOS when using iTerm2 and "Use Unicode version 9
    character widths" is enabled in `Preferences... > Profiles > Text`
 
    For that reason, the default `/.tmux.conf.local` file stopped using Unicode
@@ -91,6 +91,8 @@ Features
  - optional highlight of focused pane (tmux `>= 2.1`)
  - configurable new windows and panes behavior (optionally retain current path)
  - SSH aware split pane (reconnects to remote server, experimental)
+ - copy to OS clipboard (needs [`reattach-to-user-namespace`][reattach-to-user-namespace]
+   on macOS)
  - [Facebook PathPicker][] integration if available
  - [Urlview][] integration if available
 
@@ -256,7 +258,7 @@ This configuration supports the following builtin variables:
  - `#{username_ssh}`: SSH aware username information, blank when no SSH
    connection detected
 
-### Accessing the Mac OSX clipboard from within tmux sessions
+### Accessing the macOS clipboard from within tmux sessions
 
 [Chris Johnsen created the `reattach-to-user-namespace`
 utility][reattach-to-user-namespace] that makes `pbcopy` and `pbpaste` work
