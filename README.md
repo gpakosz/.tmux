@@ -96,7 +96,7 @@ Features
  - configurable new windows and panes behavior (optionally retain current path)
  - SSH aware split pane (reconnects to remote server, experimental)
  - copy to OS clipboard (needs [`reattach-to-user-namespace`][reattach-to-user-namespace]
-   on macOS)
+   on macOS, `xsel` or `xclip` on Linux)
  - [Facebook PathPicker][] integration if available
  - [Urlview][] integration if available
 
