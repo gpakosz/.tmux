@@ -22,9 +22,11 @@ $ cd
 $ git clone https://github.com/gpakosz/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
+$ cp .tmux/.tmux.conf.theme .
 ```
 
-Then proceed to [customize] your `~/.tmux.conf.local` copy.
+Then proceed to [customize] your `~/.tmux.conf.local` and `~/.tmux.conf.theme`
+copies.
 
 [customize]: #enabling-the-powerline-look
 
@@ -59,7 +61,7 @@ Troubleshooting
    This can also happen on macOS when using iTerm2 and "Use Unicode version 9
    character widths" is enabled in `Preferences... > Profiles > Text`
 
-   For that reason, the default `~/.tmux.conf.local` file stopped using Unicode
+   For that reason, the default `~/.tmux.conf.theme` file stopped using Unicode
    characters for which width changed in between Unicode 8.0 and 9.0 standards,
    as well as Emojis.
 
@@ -68,14 +70,14 @@ Troubleshooting
 
    First, you don't need to install Powerline. You only need fonts patched with
    Powerline symbols or the standalone `PowerlineSymbols.otf` font. Then make
-   sure your `~/.tmux.conf.local` copy uses the right code points for
+   sure your `~/.tmux.conf.theme` copy uses the right code points for
    `tmux_conf_theme_left_separator_XXX` values.
 
  - **I'm using Bash On Windows (WSL), colors and Powerline look are broken.**
 
    There is currently a [bug][1681] in the new console powering Bash On Windows
    preventing text attributes (bold, underscore, ...) to combine properly with
-   colors. The workaround is to search your `~/.tmux.conf.local` copy and
+   colors. The workaround is to search your `~/.tmux.conf.theme` copy and
    replace attributes with `'none'`.
 
    Also, until Window's console replaces its GDI based render with a DirectWrite
@@ -123,8 +125,9 @@ list of key bindings:
 This configuration uses the following bindings:
 
  - `<prefix> C-c` creates a new session
- - `<prefix> e` opens `~/.tmux.conf.local` with the editor defined by the
-   `$EDITOR` environment variable (defaults to `vim` when empty)
+ - `<prefix> e` opens both `~/.tmux.conf.local` and `~/.tmux.conf.theme` with
+   the editor defined by the `$EDITOR` environment variable (defaults to `vim`
+   when empty)
  - `<prefix> r` reloads the configuration
  - `<prefix> C-f` lets you switch to another session by name
  - `<prefix> C-h` and `<prefix> C-l` let you navigate windows (default
@@ -195,12 +198,13 @@ Configuration
 While this configuration tries to bring sane default settings, you may want to
 customize it further to your needs. Instead of altering the `~/.tmux.conf` file
 and diverging from upstream, the proper way is to edit the `~/.tmux.conf.local`
-file.
+file and/or `~/.tmux.conf.theme`.
 
-Please refer to the default `~/.tmux.conf.local` file to know more about
-variables you can adjust to alter different behaviors. Pressing `<prefix> e`
-will open `~/.tmux.conf.local` with the editor defined by the `$EDITOR`
-environment variable (defaults to `vim` when empty).
+Please refer to the defaults `~/.tmux.conf.local` and `~/.tmux.conf.theme`
+files to know more about variables you can adjust to alter different behaviors.
+Pressing `<prefix> e` will open `~/.tmux.conf.local` and `~/.tmux.conf.theme`
+with the editor defined by the `$EDITOR` environment variable (defaults to
+`vim` when empty).
 
 ### Enabling the Powerline look
 
@@ -228,7 +232,7 @@ To make use of these symbols, there are several options:
 
 Please see the [Powerline manual] for further details.
 
-Then edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the following
+Then edit the `~/.tmux.conf.theme` file (`<prefix> e`) and adjust the following
 variables:
 
 ```
@@ -242,7 +246,7 @@ tmux_conf_theme_right_separator_sub=''
 Contrary to the first iterations of this configuration, by now you have total
 control on the content and order of `status-left` and `status-right`.
 
-Edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
+Edit the `~/.tmux.conf.theme` file (`<prefix> e`) and adjust the
 `tmux_conf_theme_status_left` and `tmux_conf_theme_status_right` variables to
 your own preferences.
 
