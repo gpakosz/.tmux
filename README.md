@@ -144,29 +144,11 @@ This configuration uses the following bindings:
  - `<prefix> P` lets you choose the paste-buffer to paste from
  - `C-l` clears both the screen and the history
 
-Additionally, `vi-choice`, `vi-edit` and `vi-copy` named tables are adjusted
-   to closely match [my own Vim configuration][]
+Additionally, `copy-mode-vi` matches [my own Vim configuration][]
 
 [my own Vim configuration]: https://github.com/gpakosz/.vim.git
 
-Bindings for the `vi-choice` mode-table:
-
-- `h` collapses the current tree node
-- `l` expands the current tree node
-- `H` collapses all the tree nodes
-- `L` expands all the tree nodes
-- `K` jumps to the start of list (tmux `2.0+`)
-- `L` jumps to the end of list (tmux `2.0+`)
-- `Escape` cancels the current operation
-
-Bindings for the `vi-edit` mode-table:
-
-- `H` jumps to the start of line
-- `L` jumps to the end of line
-- `q` cancels the current operation
-- `Escape` cancels the current operation
-
-Bindings for the `vi-copy` mode-table:
+Bindings for `copy-mode-vi`:
 
 - `v` begins selection / visual mode
 - `C-v` toggles between blockwise visual mode and visual mode
