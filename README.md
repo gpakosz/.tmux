@@ -92,7 +92,7 @@ Features
  - `C-a` acts as secondary prefix, while keeping default `C-b` prefix
  - visual theme inspired by [Powerline][]
  - [maximize any pane to a new window with `<prefix> +`][maximize-pane]
- - SSH aware username and hostname status line information
+ - SSH/Mosh aware username and hostname status line information
  - mouse mode toggle with `<prefix> m`
  - automatic usage of [`reattach-to-user-namespace`][reattach-to-user-namespace]
    if available
@@ -100,7 +100,7 @@ Features
  - uptime status line information
  - optional highlight of focused pane (tmux `>= 2.1`)
  - configurable new windows and panes behavior (optionally retain current path)
- - SSH aware split pane (reconnects to remote server, experimental)
+ - SSH/Mosh aware split pane (reconnects to remote server)
  - copy to OS clipboard (needs [`reattach-to-user-namespace`][reattach-to-user-namespace]
    on macOS, `xsel` or `xclip` on Linux)
  - [Facebook PathPicker][] integration if available
@@ -246,9 +246,9 @@ This configuration supports the following builtin variables:
  - `#{battery_status}`: is battery charging or discharging?
  - `#{battery_vbar}`: vertical battery charge bar
  - `#{circled_session_name}`: circled session number, up to 20
- - `#{hostname}`: SSH aware hostname information
- - `#{hostname_ssh}`: SSH aware hostname information, blank when no SSH
-   connection detected
+ - `#{hostname}`: SSH/Mosh aware hostname information
+ - `#{hostname_ssh}`: SSH/Mosh aware hostname information, blank when not
+   connected to a remote server through SSH/Mosh
  - `#{loadavg}`: load average
  - `#{pairing}`: is session attached to more than one client?
  - `#{prefix}`: is prefix being depressed?
@@ -258,9 +258,9 @@ This configuration supports the following builtin variables:
  - `#{uptime_h}`: uptime hours
  - `#{uptime_m}`: uptime minutes
  - `#{uptime_s}`: uptime seconds
- - `#{username}`: SSH aware username information
- - `#{username_ssh}`: SSH aware username information, blank when no SSH
-   connection detected
+ - `#{username}`: SSH/Mosh aware username information
+ - `#{username_ssh}`: SSH aware username information, blank when not connected
+   to a remote server through SSH/Mosh
 
 ### Accessing the macOS clipboard from within tmux sessions
 
