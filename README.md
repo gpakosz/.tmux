@@ -203,7 +203,7 @@ look is based on the use of special symbols: <img width="80" alt="Powerline Symb
 To make use of these symbols, there are several options:
 
 - use a font that already bundles those: this is e.g. the case of the
-  [2.030R-ro/1.050R-it version][source code pro] of the Source Code Pro] font
+  [2.030R-ro/1.050R-it version][source code pro] of the Source Code Pro font
 - use a [pre-patched font][powerline patched fonts]
 - use your preferred font along with the [Powerline font][powerline font] (that
   only contains the Powerline symbols): [this highly depends on your operating
