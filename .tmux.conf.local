@@ -248,6 +248,8 @@ unbind C-a
 set -g prefix2 C-space
 bind C-space send-prefix -2
 set -g history-limit 8000 # boost history
+run -b 'tmux bind -t vi-copy y copy-pipe "xclip -in -selection clipboard"'
+run -b 'tmux bind -t vi-copy MouseDragEnd1Pane copy-pipe "xclip -in -selection clipboard"'
 
 ### -- navigation ----------------------------------------------------------------
 
