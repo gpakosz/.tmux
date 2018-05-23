@@ -629,8 +629,8 @@ _apply_theme() {
     tmux_conf_theme_window_status_current_format="#[fg=$tmux_conf_theme_window_status_bg,bg=$tmux_conf_theme_window_status_current_bg]$tmux_conf_theme_left_separator_main#[fg=default,bg=default,default] $tmux_conf_theme_window_status_current_format #[fg=$tmux_conf_theme_window_status_current_bg,bg=$tmux_conf_theme_status_bg,none]$tmux_conf_theme_left_separator_main"
   fi
 
-  tmux_conf_theme_window_status_format=$(echo "$tmux_conf_theme_window_status_format" | sed 's%#{circled_window_index}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _circled_digit #I)%g')
-  tmux_conf_theme_window_status_current_format=$(echo "$tmux_conf_theme_window_status_current_format" | sed 's%#{circled_window_index}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _circled_digit #I)%g')
+  tmux_conf_theme_window_status_format=$(echo "$tmux_conf_theme_window_status_format" | sed 's%#{circled_window_index}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _circled_digit #I)%g')
+  tmux_conf_theme_window_status_current_format=$(echo "$tmux_conf_theme_window_status_current_format" | sed 's%#{circled_window_index}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _circled_digit #I)%g')
 
   tmux  setw -g window-status-style "fg=$tmux_conf_theme_window_status_fg,bg=$tmux_conf_theme_window_status_bg,$tmux_conf_theme_window_status_attr" \;\
         setw -g window-status-format "$tmux_conf_theme_window_status_format" \;\
@@ -683,7 +683,7 @@ _apply_theme() {
     -e "s/#{prefix}/#[fg=$tmux_conf_theme_prefix_fg]#[bg=$tmux_conf_theme_prefix_bg]#[$tmux_conf_theme_prefix_attr]#{?client_prefix,$tmux_conf_theme_prefix,}/g")
 
   tmux_conf_theme_status_left=$(echo "$tmux_conf_theme_status_left" | sed \
-    -e "s%#{root}%#[fg=$tmux_conf_theme_root_fg]#[bg=$tmux_conf_theme_root_bg]#[$tmux_conf_theme_root_attr]#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _root #{pane_tty} #D)#[inherit]%g")
+    -e "s%#{root}%#[fg=$tmux_conf_theme_root_fg]#[bg=$tmux_conf_theme_root_bg]#[$tmux_conf_theme_root_attr]#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _root #{pane_tty} #D)#[inherit]%g")
 
   if [ -n "$tmux_conf_theme_status_left" ]; then
     status_left=$(awk \
@@ -767,7 +767,7 @@ EOF
     -e "s/#{prefix}/#[fg=$tmux_conf_theme_prefix_fg]#[bg=$tmux_conf_theme_prefix_bg]#[$tmux_conf_theme_prefix_attr]#{?client_prefix,$tmux_conf_theme_prefix,}/g")
 
   tmux_conf_theme_status_right=$(echo "$tmux_conf_theme_status_right" | sed \
-    -e "s%#{root}%#[fg=$tmux_conf_theme_root_fg]#[bg=$tmux_conf_theme_root_bg]#[$tmux_conf_theme_root_attr]#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _root #{pane_tty} #D)#[inherit]%g")
+    -e "s%#{root}%#[fg=$tmux_conf_theme_root_fg]#[bg=$tmux_conf_theme_root_bg]#[$tmux_conf_theme_root_attr]#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _root #{pane_tty} #D)#[inherit]%g")
 
   if [ -n "$tmux_conf_theme_status_right" ]; then
     status_right=$(awk \
@@ -865,22 +865,22 @@ EOF
             set -g '@battery_vbar_palette' "$tmux_conf_battery_vbar_palette" \;\
             set -g '@battery_status_charging' "$tmux_conf_battery_status_charging" \;\
             set -g '@battery_status_discharging' "$tmux_conf_battery_status_discharging"
-      status_right="#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _battery)$status_right"
+      status_right="#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _battery)$status_right"
       ;;
   esac
 
   case "$status_left $status_right" in
     *'#{username}'*|*'#{hostname}'*|*'#{username_ssh}'*|*'#{hostname_ssh}'*)
       status_left=$(echo "$status_left" | sed \
-        -e 's%#{username}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _username #{pane_tty} false #D)%g' \
-        -e 's%#{hostname}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _hostname #{pane_tty} false #D)%g' \
-        -e 's%#{username_ssh}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _username #{pane_tty} true #D)%g' \
-        -e 's%#{hostname_ssh}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _hostname #{pane_tty} true #D)%g')
+        -e 's%#{username}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _username #{pane_tty} false #D)%g' \
+        -e 's%#{hostname}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _hostname #{pane_tty} false #D)%g' \
+        -e 's%#{username_ssh}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _username #{pane_tty} true #D)%g' \
+        -e 's%#{hostname_ssh}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _hostname #{pane_tty} true #D)%g')
       status_right=$(echo "$status_right" | sed \
-        -e 's%#{username}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _username #{pane_tty} false #D)%g' \
-        -e 's%#{hostname}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _hostname #{pane_tty} false #D)%g' \
-        -e 's%#{username_ssh}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _username #{pane_tty} true #D)%g' \
-        -e 's%#{hostname_ssh}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _hostname #{pane_tty} true #D)%g')
+        -e 's%#{username}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _username #{pane_tty} false #D)%g' \
+        -e 's%#{hostname}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _hostname #{pane_tty} false #D)%g' \
+        -e 's%#{username_ssh}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _username #{pane_tty} true #D)%g' \
+        -e 's%#{hostname_ssh}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _hostname #{pane_tty} true #D)%g')
       ;;
   esac
 
@@ -896,7 +896,7 @@ EOF
         -e 's/#\{(\?)?uptime_h/#\{\1@uptime_h/g' \
         -e 's/#\{(\?)?uptime_m/#\{\1@uptime_m/g' \
         -e 's/#\{(\?)?uptime_s/#\{\1@uptime_s/g')
-      status_right="#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _uptime)$status_right"
+      status_right="#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _uptime)$status_right"
       ;;
   esac
 
@@ -906,12 +906,12 @@ EOF
         -e 's/#\{(\?)?loadavg/#\{\1@loadavg/g')
       status_right=$(echo "$status_right" | sed -E \
         -e 's/#\{(\?)?loadavg/#\{\1@loadavg/g')
-      status_right="#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _loadavg)$status_right"
+      status_right="#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _loadavg)$status_right"
       ;;
   esac
 
-  status_left=$(echo "$status_left" | sed 's%#{circled_session_name}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _circled_digit #S)%g')
-  status_right=$(echo "$status_right" | sed 's%#{circled_session_name}%#(cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s|cat ~/.oh-my-tmux/oh-my-tmux.sh | sh -s _circled_digit #S)%g')
+  status_left=$(echo "$status_left" | sed 's%#{circled_session_name}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _circled_digit #S)%g')
+  status_right=$(echo "$status_right" | sed 's%#{circled_session_name}%#(sh ~/.oh-my-tmux/oh-my-tmux.sh|sh ~/.oh-my-tmux/oh-my-tmux.sh _circled_digit #S)%g')
 
   tmux  set -g status-left-length 1000 \; set -g status-left "$status_left" \;\
         set -g status-right-length 1000 \; set -g status-right "$status_right"
