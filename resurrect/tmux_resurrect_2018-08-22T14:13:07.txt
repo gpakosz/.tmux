@@ -1,0 +1,7 @@
+pane	syncanalytics	1	:vpn	0	:	1	:/root/vpn-picker	1	bash	:/bin/bash /usr/local/bin/vpnpicker
+pane	syncanalytics	2	:bash	0	:-	1	:/root/Documents/fordredteam/syncanalytics	1	bash	:
+pane	syncanalytics	3	:bash	1	:*	1	:/root	1	bash	:
+window	syncanalytics	1	0	:	b2fd,189x50,0,0,0
+window	syncanalytics	2	0	:-	b304,189x50,0,0,7
+window	syncanalytics	3	1	:*	b305,189x50,0,0,8
+state	syncanalytics	
