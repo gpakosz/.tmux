@@ -254,6 +254,7 @@ This configuration supports the following builtin variables:
  - `#{pairing}`: is session attached to more than one client?
  - `#{prefix}`: is prefix being depressed?
  - `#{root}`: is current user root?
+ - `#{synchronized}`: are the panes synchronized?
  - `#{uptime_d}`: uptime days
  - `#{uptime_h}`: uptime hours
  - `#{uptime_m}`: uptime minutes
