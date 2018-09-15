@@ -265,7 +265,14 @@ tmux_conf_theme_clock_style='24'
 #   - true
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
-# on Linux, this requires xsel or xclip
+# on operating systems running X.org, this requires installing xsel or xclip
+# on Windows, clip.exe is used
+# on Cygwin, /dev/clipboard is used
+#
+# when connecting to a remote tmux session through SSH, copied text will be sent
+# back to the local clipboard (tmux >= 2.4) using the OSC 52 escape sequence
+#   - this requires set-clipboard to be set to on or external (default)
+#   - this requires having a terminal that understand the OSC 52 escape sequence
 tmux_conf_copy_to_os_clipboard=false
 
 
