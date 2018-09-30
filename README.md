@@ -188,7 +188,10 @@ Configuration
 While this configuration tries to bring sane default settings, you may want to
 customize it further to your needs. Instead of altering the `~/.tmux.conf` file
 and diverging from upstream, the proper way is to edit the `~/.tmux.conf.local`
-file.
+file. Additionally, you can create `~/.tmux.d/` directory and create as many
+configuration files as you need. This could be useful if you version control
+your settings and need different options on different machines/environments.
+Good example could be using vcsh/mr.
 
 Please refer to the default `~/.tmux.conf.local` file to know more about
 variables you can adjust to alter different behaviors. Pressing `<prefix> e`
