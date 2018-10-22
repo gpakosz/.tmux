@@ -208,14 +208,10 @@ To make use of these symbols, there are several options:
 - use your preferred font along with the [Powerline font][powerline font] (that
   only contains the Powerline symbols): [this highly depends on your operating
   system and your terminal emulator][terminal support]
-- [patch your preferred font][powerline font patcher] by adding the missing
-  Powerline symbols: this is the most difficult way and is no more documented in
-  the [Powerline manual]
 
 [source code pro]: https://github.com/adobe-fonts/source-code-pro/releases/tag/2.030R-ro/1.050R-it
 [powerline patched fonts]: https://github.com/powerline/fonts
 [powerline font]: https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-[powerline font patcher]: https://github.com/powerline/fontpatcher
 [terminal support]: http://powerline.readthedocs.io/en/master/usage.html#usage-terminal-emulators
 [Powerline manual]: http://powerline.readthedocs.org/en/latest/installation.html#fonts-installation
 
