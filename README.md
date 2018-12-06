@@ -1,5 +1,17 @@
-.tmux
+.tmux - by phil
 =====
+
+Adjusted source so that I have my own config
+
+```
+cd
+git clone https://github.com/philkuz/.tmux.git
+cd .tmux/
+# install local  (comment out when installing remote)
+./install_local.sh
+# uncomment to install remote.
+# ./install_remote.sh
+```
 
 Self-contained, pretty and versatile `.tmux.conf` configuration file.
 
