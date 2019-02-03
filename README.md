@@ -258,6 +258,18 @@ This configuration supports the following builtin variables:
  - `#{username_ssh}`: SSH aware username information, blank when not connected
    to a remote server through SSH/Mosh
 
+Beside custom variables mentioned above, the `tmux_conf_theme_status_left` and
+`tmux_conf_theme_status_right` variables support usual tmux syntax, e.g. using
+`#()` to call an external command that inserts weather information provided by
+[wttr.in]:
+```
+tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in?format=3) , %R , %d %b | #{username}#{root} | #{hostname} '
+```
+
+![Weather information from wttr.in](https://user-images.githubusercontent.com/553208/52175490-07797c00-27a5-11e9-9fb6-42eec4fe4188.png)
+
+[wttr.in]: https://github.com/chubin/wttr.in#one-line-output
+
 ### Accessing the macOS clipboard from within tmux sessions
 
 [Chris Johnsen created the `reattach-to-user-namespace`
