@@ -208,7 +208,9 @@ To make use of these symbols, there are several options:
 - use a [pre-patched font][powerline patched fonts]
 - use your preferred font along with the [Powerline font][powerline font] (that
   only contains the Powerline symbols): [this highly depends on your operating
-  system and your terminal emulator][terminal support]
+  system and your terminal emulator][terminal support], for instance here's a
+  screenshot of iTerm2 configured to use `PowerlineSymbols.otf`
+  ![iTerm2 + Powerline font](https://user-images.githubusercontent.com/553208/62243890-8232f500-b3de-11e9-9b8c-51a5d38bdaa8.png)
 
 [source code pro]: https://github.com/adobe-fonts/source-code-pro/releases/tag/2.030R-ro/1.050R-it
 [powerline patched fonts]: https://github.com/powerline/fonts
