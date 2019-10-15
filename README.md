@@ -82,6 +82,13 @@ Troubleshooting
    one, Powerline symbols will be broken.
 
    The alternative is to use the [Mintty terminal for WSL][wsltty].
+   
+ - **Will this work with the new [Windows Terminal]?**
+    
+    Yes, yes it will. Here's a screenshot:
+    
+    ![image](https://user-images.githubusercontent.com/6472374/66804257-a8225d00-ef2a-11e9-901a-318a3a22151f.png)
+ 
 
 [1681]: https://github.com/Microsoft/BashOnWindows/issues/1681
 [wsltty]: https://github.com/mintty/wsltty
@@ -322,3 +329,5 @@ font.
 ![regedit](https://cloud.githubusercontent.com/assets/553208/19741304/71a2f3ae-9bc0-11e6-96aa-4c09a812c313.png)
 
 [font linking]: https://msdn.microsoft.com/en-us/goglobal/bb688134.aspx
+
+[Windows Terminal]: https://github.com/microsoft/terminal
