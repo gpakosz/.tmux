@@ -260,6 +260,10 @@ tmux_conf_battery_status_discharging='↓'    # U+2193
 tmux_conf_theme_clock_colour='#00afff'  # light blue
 tmux_conf_theme_clock_style='24'
 
+# Custom message configuration.  Enter a command and interval here, and include
+# "#{custom}" in tmux_conf_theme_status_left or tmux_conf_theme_status_right
+tmux_custom_command='curl wttr.in/?format=3 2>/dev/null || echo "<weather unavailable>"'
+tmux_custom_interval=15 # number of minutes between updates
 
 # -- clipboard -----------------------------------------------------------------
 

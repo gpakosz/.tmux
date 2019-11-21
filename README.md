@@ -245,6 +245,8 @@ This configuration supports the following builtin variables:
  - `#{battery_status}`: is battery charging or discharging?
  - `#{battery_vbar}`: vertical battery charge bar
  - `#{circled_session_name}`: circled session number, up to 20
+ - `#{custom}`: custom command, specified in `tmux_custom_command`, and
+   executed once every `tmux_custom_interval` minutes
  - `#{hostname}`: SSH/Mosh aware hostname information
  - `#{hostname_ssh}`: SSH/Mosh aware hostname information, blank when not
    connected to a remote server through SSH/Mosh
