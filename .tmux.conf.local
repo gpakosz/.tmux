@@ -268,9 +268,10 @@ tmux_conf_copy_to_os_clipboard=false
 #   - true
 #   - false (default)
 #
-# this requires set-clipboard to be set to 'on' or 'external' (default)
-# this requires having a terminal that emulator that understands the OSC 5
-# escape sequence
+# this requires tmux_conf_copy_to_os_clipboard to be set to 'true' and
+# set-clipboard to be set to 'on' or 'external' (default)
+# this requires having a terminal emulator that understands the OSC 52 escape
+# sequence
 tmux_conf_share_remote_clipboard=false
 
 # -- user customizations -------------------------------------------------------
