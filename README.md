@@ -269,6 +269,9 @@ Beside custom variables mentioned above, the `tmux_conf_theme_status_left` and
 [wttr.in]:
 ```
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in?format=3) , %R , %d %b | #{username}#{root} | #{hostname} '
+
+# Escape % char in case of custom weather format with %
+tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in/?format=%%l:+%%C+%%t) , %R , %d %b | #{username}#{root} | #{hostname} '
 ```
 
 ![Weather information from wttr.in](https://user-images.githubusercontent.com/553208/52175490-07797c00-27a5-11e9-9fb6-42eec4fe4188.png)
