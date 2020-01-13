@@ -10,8 +10,9 @@ Installation
 
 Requirements:
 
-  - tmux **`>= 2.1`** running inside Linux, Mac, OpenBSD, Cygwin or WSL (Bash on
-    Ubuntu on Windows)
+  - tmux **`>= 2.1`** (soon `>= 2.4`) running inside Linux, Mac, OpenBSD, Cygwin
+    or WSL
+  - awk, perl and sed
   - outside of tmux, `$TERM` must be set to `xterm-256color`
 
 To install, run the following from your terminal: (you may want to backup your
