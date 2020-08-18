@@ -294,3 +294,7 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+
+# Binding syncrhonize-panes shortcut
+bind C-s setw synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
+
