@@ -5,6 +5,16 @@ Self-contained, pretty and versatile `.tmux.conf` configuration file.
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/553208/19740585/85596a5a-9bbf-11e6-8aa1-7c8d9829c008.gif)
 
+Introduction
+------------
+This repository is modification from [this original repository](https://github.com/gpakosz/.tmux.git) for my customization.
+
+Modification lists:
+
+- Use hightlighted panes as default
+- Add syncrhonize-pane shortcut to `<prefix> C+s`
+
+
 Installation
 ------------
 
