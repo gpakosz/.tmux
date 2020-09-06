@@ -202,10 +202,10 @@ customize it further to your needs. Instead of altering the `~/.tmux.conf` file
 and diverging from upstream, the proper way is to edit the `~/.tmux.conf.local`
 file.
 
-Please refer to the default `~/.tmux.conf.local` file to know more about
-variables you can adjust to alter different behaviors. Pressing `<prefix> e`
-will open `~/.tmux.conf.local` with the editor defined by the `$EDITOR`
-environment variable (defaults to `vim` when empty).
+Please refer to the sample `.tmux.conf.local` file to know more about variables
+you can adjust to alter different behaviors. Pressing `<prefix> e` will open
+`~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment
+variable (defaults to `vim` when empty).
 
 ### Enabling the Powerline look
 
@@ -231,8 +231,8 @@ To make use of these symbols, there are several options:
 
 Please see the [Powerline manual] for further details.
 
-Then edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the following
-variables:
+Then edit your `~/.tmux.conf.local` copy (with `<prefix> e`) and adjust the
+following variables:
 
 ```
 tmux_conf_theme_left_separator_main='\uE0B0'
@@ -245,7 +245,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'
 Contrary to the first iterations of this configuration, by now you have total
 control on the content and order of `status-left` and `status-right`.
 
-Edit the `~/.tmux.conf.local` file (`<prefix> e`) and adjust the
+Edit your `~/.tmux.conf.local` copy (`<prefix> e`) and adjust the
 `tmux_conf_theme_status_left` and `tmux_conf_theme_status_right` variables to
 your own preferences.
 
@@ -286,6 +286,9 @@ minutes whatever the value of `status-interval`.
 ![Weather information from wttr.in](https://user-images.githubusercontent.com/553208/52175490-07797c00-27a5-11e9-9fb6-42eec4fe4188.png)
 
 [wttr.in]: https://github.com/chubin/wttr.in#one-line-output
+
+💡 You can also define your own custom variables. See the sample
+`.tmux.conf.local` file for instructions.
 
 Finally, remember `tmux_conf_theme_status_left` and
 `tmux_conf_theme_status_right` end up being given to tmux as `status-left` and
