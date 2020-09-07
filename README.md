@@ -278,8 +278,10 @@ Beside custom variables mentioned above, the `tmux_conf_theme_status_left` and
 `#()` to call an external command that inserts weather information provided by
 [wttr.in]:
 ```
-tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in?format=3) , %R , %d %b | #{username}#{root} | #{hostname} '
+tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl -m 1 wttr.in?format=3 2>/dev/null; sleep 900) , %R , %d %b | #{username}#{root} | #{hostname} '
 ```
+The `sleep 900` call makes sure the network request is issued at most every 15
+minutes whatever the value of `status-interval`.
 
 ![Weather information from wttr.in](https://user-images.githubusercontent.com/553208/52175490-07797c00-27a5-11e9-9fb6-42eec4fe4188.png)
 
