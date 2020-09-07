@@ -287,6 +287,15 @@ minutes whatever the value of `status-interval`.
 
 [wttr.in]: https://github.com/chubin/wttr.in#one-line-output
 
+Finally, remember `tmux_conf_theme_status_left` and
+`tmux_conf_theme_status_right` end up being given to tmux as `status-left` and
+`status-right` which means they're passed through `strftime()`. As such, the `%`
+character has a special meaning and needs to be escaped by doubling it, e.g.
+```
+tmux_conf_theme_status_right='#(echo foo %% bar)'
+```
+See `man 3 strftime`.
+
 ### Accessing the macOS clipboard from within tmux sessions
 
 [Chris Johnsen created the `reattach-to-user-namespace`
