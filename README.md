@@ -83,19 +83,15 @@ Troubleshooting
    `tmux_conf_theme_left_separator_XXX` values.
 
  - **I'm using Bash On Windows (WSL), colors and Powerline look are broken.**
-
-   There is currently a [bug][1681] in the new console powering Bash On Windows
-   preventing text attributes (bold, underscore, ...) to combine properly with
-   colors. The workaround is to search your `~/.tmux.conf.local` copy and
-   replace attributes with `'none'`.
-
-   Also, until Window's console replaces its GDI based render with a DirectWrite
-   one, Powerline symbols will be broken.
-
-   The alternative is to use the [Mintty terminal for WSL][wsltty].
+ 
+   The Bash On Windows terminal that ships with WSL distros has problems
+   displaying certain text attributes and powerline code points. It's highly
+   recommended to use the [Windows Terminal][microsoft-terminal] application
+   instead (also installable from the [Microsoft Store][microsoft-store]).
 
 [1681]: https://github.com/Microsoft/BashOnWindows/issues/1681
-[wsltty]: https://github.com/mintty/wsltty
+[microsoft-terminal]: https://github.com/microsoft/terminal
+[microsoft-store]: https://aka.ms/terminal
 
 Features
 --------
