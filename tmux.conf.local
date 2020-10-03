@@ -274,8 +274,13 @@ tmux_conf_copy_to_os_clipboard=false
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
+# Explicitly open tmux with zsh
+# For work devpod, but should not impact local tmux
+set -g default-shell /bin/zsh
+set -g default-command /bin/zsh
+
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # start with mouse mode enabled
 #set -g mouse on
@@ -293,7 +298,23 @@ tmux_conf_copy_to_os_clipboard=false
 # bind C-a send-prefix
 
 # move status line to top
-#set -g status-position top
+set -g status-position top
+
+# split panes using | and -
+bind \\ split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# switch panes using Alt-arrow without prefix
+# Only works in iTerm/Mac rn?
+bind -n M-h select-pane -L
+bind -n M-l select-pane -R
+bind -n M-k select-pane -U
+bind -n M-j select-pane -D
+
+# set <prefix> space to toggle between pane layouts
+bind '"' next-layout
 
 
 # -- custom variables ----------------------------------------------------------
