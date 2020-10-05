@@ -323,6 +323,9 @@ tmux_conf_copy_to_os_clipboard=true
 # "$@"
 # # /!\ do not remove the previous line
 
+#kill pane without confirm
+bind-key x kill-pane
+bind-key & kill-window
 
 # TMUX plugins
 set -g @plugin 'tmux-plugins/tpm'
