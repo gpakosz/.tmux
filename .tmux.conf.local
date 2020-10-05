@@ -5,6 +5,9 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
+#set -g default-terminal "xterm-256color"
+#set -ga terminal-overrides ",*256col*:Tc"
+
 # -- navigation ----------------------------------------------------------------
 
 # if you're running tmux within iTerm2
@@ -43,7 +46,7 @@ tmux_conf_new_session_prompt=false
 # RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
 #  - false (default)
-tmux_conf_theme_24b_colour=false
+tmux_conf_theme_24b_colour=true
 
 # window style
 tmux_conf_theme_window_fg='default'
@@ -72,14 +75,14 @@ tmux_conf_theme_pane_indicator='#00afff'                # light blue
 tmux_conf_theme_pane_active_indicator='#00afff'         # light blue
 
 # status line style
-tmux_conf_theme_message_fg='#000000'                    # black
-tmux_conf_theme_message_bg='#ffff00'                    # yellow
-tmux_conf_theme_message_attr='bold'
+tmux_conf_theme_message_fg='#c8c8c8'                    # gray
+tmux_conf_theme_message_bg='#060606'                    # black
+tmux_conf_theme_message_attr='none'
 
 # status line command style (<prefix> : Escape)
-tmux_conf_theme_message_command_fg='#ffff00'            # yellow
-tmux_conf_theme_message_command_bg='#000000'            # black
-tmux_conf_theme_message_command_attr='bold'
+tmux_conf_theme_message_command_fg='#c8c8c8'            # gray
+tmux_conf_theme_message_command_bg='#060606'            # black
+tmux_conf_theme_message_command_attr='none'
 
 # window modes style
 tmux_conf_theme_mode_fg='#000000'                       # black
@@ -124,8 +127,8 @@ tmux_conf_theme_window_status_format='#I #W'
 #     - #{hostname_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_current_fg='#000000'      # black
-tmux_conf_theme_window_status_current_bg='#00afff'      # light blue
+tmux_conf_theme_window_status_current_fg='#e1e1e1'      # write
+tmux_conf_theme_window_status_current_bg='#006f00'      # green
 tmux_conf_theme_window_status_current_attr='bold'
 tmux_conf_theme_window_status_current_format='#I #W'
 #tmux_conf_theme_window_status_current_format='#{circled_window_index} #W'
@@ -142,7 +145,7 @@ tmux_conf_theme_window_status_bell_bg='default'
 tmux_conf_theme_window_status_bell_attr='blink,bold'
 
 # window last status style
-tmux_conf_theme_window_status_last_fg='#00afff'         # light blue
+tmux_conf_theme_window_status_last_fg='#003f00'         # light green
 tmux_conf_theme_window_status_last_bg='default'
 tmux_conf_theme_window_status_last_attr='none'
 
@@ -184,14 +187,14 @@ tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
 
 # status left style
-tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
-tmux_conf_theme_status_left_bg='#ffff00,#ff00af,#00afff'  # yellow, pink, white blue
-tmux_conf_theme_status_left_attr='bold,none,none'
+tmux_conf_theme_status_left_fg='#000000,#0f0f0f,#e4e4e4'  # black, white , white
+tmux_conf_theme_status_left_bg='#98bcbd,#7a7a7a,#00afff'  # yellow, pink, white blue
+tmux_conf_theme_status_left_attr='none,none,none'
 
 # status right style
-tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000' # light gray, white, black
-tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4' # dark gray, red, white
-tmux_conf_theme_status_right_attr='none,none,bold'
+tmux_conf_theme_status_right_fg='#8a8a8a,#333333,#000000' # light gray, white, black
+tmux_conf_theme_status_right_bg='#080808,#98bede,#e4e4e4' # dark gray, red, white
+tmux_conf_theme_status_right_attr='none,none,none'
 
 # pairing indicator
 tmux_conf_theme_pairing='👓 '          # U+1F453
@@ -226,7 +229,7 @@ tmux_conf_battery_bar_symbol_empty='◻'
 # battery bar length (in number of symbols), possible values are:
 #   - auto
 #   - a number, e.g. 5
-tmux_conf_battery_bar_length='auto'
+tmux_conf_battery_bar_length='6'
 
 # battery bar palette, possible values are:
 #   - gradient (default)
@@ -268,7 +271,7 @@ tmux_conf_theme_clock_style='24'
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -319,3 +322,12 @@ tmux_conf_copy_to_os_clipboard=false
 #
 # "$@"
 # # /!\ do not remove the previous line
+
+
+# TMUX plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+
+
+run '~/.tmux/plugins/tpm/tpm'
