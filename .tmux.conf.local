@@ -86,8 +86,8 @@ tmux_conf_theme_message_command_attr='none'
 
 # window modes style
 tmux_conf_theme_mode_fg='#000000'                       # black
-tmux_conf_theme_mode_bg='#ffff00'                       # yellow
-tmux_conf_theme_mode_attr='bold'
+tmux_conf_theme_mode_bg='#8a8a8a'                       # white
+tmux_conf_theme_mode_attr='none'
 
 # status line style
 tmux_conf_theme_status_fg='#8a8a8a'                     # light gray
