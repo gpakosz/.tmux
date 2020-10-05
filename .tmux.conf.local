@@ -326,8 +326,5 @@ tmux_conf_copy_to_os_clipboard=true
 
 # TMUX plugins
 set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-
-
 
 run '~/.tmux/plugins/tpm/tpm'
