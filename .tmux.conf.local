@@ -327,6 +327,9 @@ tmux_conf_copy_to_os_clipboard=true
 bind-key x kill-pane
 bind-key & kill-window
 
+bind -n C-S-Left { swap-window -t -1; previous-window }
+bind -n C-S-Right { swap-window -t +1; next-window }
+
 # TMUX plugins
 set -g @plugin 'tmux-plugins/tpm'
 
