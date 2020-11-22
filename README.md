@@ -20,7 +20,7 @@ existing `~/.tmux.conf` first)
 
 ```
 $ cd
-$ git clone https://github.com/gpakosz/.tmux.git
+$ git clone https://github.com/hyq5436/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 ```
@@ -30,7 +30,7 @@ proper `~/.tmux.conf` symlink and you copy the `.tmux.conf.local` sample file in
 your home directory:
 
 ```
-$ git clone https://github.com/gpakosz/.tmux.git /path/to/oh-my-tmux
+$ git clone https://github.com/hyq5436/.tmux.git /path/to/oh-my-tmux
 $ ln -s -f /path/to/oh-my-tmux/.tmux.conf ~/.tmux.conf
 $ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
 ```
