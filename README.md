@@ -299,7 +299,7 @@ tmux_conf_theme_status_right='#(echo foo %% bar)'
 ```
 See `man 3 strftime`.
 
-### Accessing the macOS clipboard from within tmux sessions
+### Accessing the macOS clipboard from within tmux sessions (tmux `< 2.6`)
 
 [Chris Johnsen created the `reattach-to-user-namespace`
 utility][reattach-to-user-namespace] that makes `pbcopy` and `pbpaste` work
