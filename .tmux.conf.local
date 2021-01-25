@@ -397,7 +397,7 @@ tmux_conf_update_plugins_on_reload=true
 # }
 #
 # online() {
-#   ping -t 1 -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
+#   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
 # }
 #
 # "$@"
