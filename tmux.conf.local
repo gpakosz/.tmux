@@ -316,6 +316,13 @@ bind -n M-j select-pane -D
 # set <prefix> space to toggle between pane layouts
 bind '"' next-layout
 
+# Pressing Ctrl+Shift+Left (will move the current window to the left. Similarly right. No need to use the modifier (C-a).
+# https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows
+# For tmux 3.0 version, you should use following key bindings
+# bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+# bind-key -n C-S-Right swap-window -t +1\; select-window -t +1)
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
 
 # -- custom variables ----------------------------------------------------------
 # to define a custom #{foo} variable, define a POSIX shell function between the
