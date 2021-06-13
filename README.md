@@ -35,6 +35,19 @@ $ ln -s -f /path/to/oh-my-tmux/.tmux.conf ~/.tmux.conf
 $ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
 ```
 
+💡 You can use .config/ directory:
+```zsh
+# to install
+mkdir -p ~/.config/tmux
+git clone https://github.com/gpakosz/.tmux.git ~/.config/tmux/oh-my-tmux
+sed -i 's#\.tmux\.conf#.config/tmux/tmux.conf#g' ~/.config/tmux/oh-my-tmux/.tmux.conf
+ln -s -f ~/.config/tmux/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
+cp ~/.config/tmux/oh-my-tmux/.tmux.conf.local ~/.config/tmux/tmux.conf.local
+
+# then to update
+cd ~/.config/tmux/oh-my-tmux/ && git reset --hard && git pull && sed -i 's#\.tmux\.conf#.config/tmux/tmux.conf#g' .tmux.conf
+```
+
 Then proceed to [customize] your `~/.tmux.conf.local` copy.
 
 [customize]: #configuration
