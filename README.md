@@ -35,6 +35,11 @@ $ ln -s -f /path/to/oh-my-tmux/.tmux.conf ~/.tmux.conf
 $ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
 ```
 
+Reload the configuration file to see the changes:
+```
+$ tmux source ~/.tmux.conf
+```
+
 Then proceed to [customize] your `~/.tmux.conf.local` copy.
 
 [customize]: #configuration
