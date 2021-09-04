@@ -311,6 +311,11 @@ This configuration now comes with built-in [TPM] support:
 - `~/.tmux.conf.local` copy ← people who are used to alter
   `.tmux.conf` to add TPM support will have to adapt their configuration
 
+⚠️ The TPM bindings differ slightly from upstream:
+  - installing plugins: `<prefix> + I`
+  - uninstalling plugins: `<prefix> + Alt + u`
+  - updating plugins: `<prefix> + u`
+
 See `~/.tmux.conf.local` for instructions.
 
 [TPM]: https://github.com/tmux-plugins/tpm
