@@ -135,6 +135,8 @@ tmux_conf_theme_status_attr="none"
 #     - #{circled_session_name}
 #     - #{hostname}
 #     - #{hostname_ssh}
+#     - #{hostname_full}
+#     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
@@ -145,6 +147,8 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 #     - #{circled_session_name}
 #     - #{hostname}
 #     - #{hostname_ssh}
+#     - #{hostname_full}
+#     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
@@ -160,6 +164,8 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{circled_session_name}
 #     - #{hostname}
 #     - #{hostname_ssh}
+#     - #{hostname_full}
+#     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
@@ -193,6 +199,10 @@ tmux_conf_theme_left_separator_main=""  # /!\ you don't need to install Power
 tmux_conf_theme_left_separator_sub=""   #   you only need fonts patched with
 tmux_conf_theme_right_separator_main="" #   Powerline symbols or the standalone
 tmux_conf_theme_right_separator_sub=""  #   PowerlineSymbols.otf font, see README.md
+#tmux_conf_theme_left_separator_main='\uE0B0'  # /!\ you don't need to install Powerline
+#tmux_conf_theme_left_separator_sub='\uE0B1'   #   you only need fonts patched with
+#tmux_conf_theme_right_separator_main='\uE0B2' #   Powerline symbols or the standalone
+#tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see README.md
 
 # status left/right content:
 #   - separate main sections with "|"
@@ -206,6 +216,8 @@ tmux_conf_theme_right_separator_sub=""  #   PowerlineSymbols.otf font, see RE
 #     - #{circled_session_name}
 #     - #{hostname_ssh}
 #     - #{hostname}
+#     - #{hostname_full}
+#     - #{hostname_full_ssh}
 #     - #{loadavg}
 #     - #{mouse}
 #     - #{pairing}
@@ -341,7 +353,50 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g status-position top
 
 
+# -- tpm -----------------------------------------------------------------------
+
+# while I don't use tpm myself, many people requested official support so here
+# is a seamless integration that automatically installs plugins in parallel
+
+# whenever a plugin introduces a variable to be used in 'status-left' or
+# 'status-right', you can use it in 'tmux_conf_theme_status_left' and
+# 'tmux_conf_theme_status_right' variables.
+
+# by default, launching tmux will update tpm and all plugins
+#   - true (default)
+#   - false
+tmux_conf_update_plugins_on_launch=true
+
+# by default, reloading the configuration will update tpm and all plugins
+#   - true (default)
+#   - false
+tmux_conf_update_plugins_on_reload=true
+
+# by default, reloading the configuration will uninstall tpm and plugins when no
+# plugins are enabled
+#   - true (default)
+#   - false
+tmux_conf_uninstall_plugins_on_reload=true
+
+# /!\ the tpm bindings differ slightly from upstream:
+#   - installing plugins: <prefix> + I
+#   - uninstalling plugins: <prefix> + Alt + u
+#   - updating plugins: <prefix> + u
+
+# /!\ do not add set -g @plugin 'tmux-plugins/tpm'
+# /!\ do not add run '~/.tmux/plugins/tpm/tpm'
+
+# to enable a plugin, use the 'set -g @plugin' syntax:
+# visit https://github.com/tmux-plugins for available plugins
+#set -g @plugin 'tmux-plugins/tmux-copycat'
+#set -g @plugin 'tmux-plugins/tmux-cpu'
+#set -g @plugin 'tmux-plugins/tmux-resurrect'
+#set -g @plugin 'tmux-plugins/tmux-continuum'
+#set -g @continuum-restore 'on'
+
+
 # -- custom variables ----------------------------------------------------------
+
 # to define a custom #{foo} variable, define a POSIX shell function between the
 # '# EOF' and the '# "$@"' lines. Please note that the opening brace { character
 # must be on the same line as the function name otherwise the parse won't detect
@@ -353,13 +408,15 @@ tmux_conf_copy_to_os_clipboard=false
 # # /!\ do not remove the following line
 # EOF
 #
+# # /!\ do not "uncomment" the functions: the leading "# " characters are needed
+#
 # weather() {
 #   curl -m 1 wttr.in?format=3 2>/dev/null
 #   sleep 900 # sleep for 15 minutes, throttle network requests whatever the value of status-interval
 # }
 #
 # online() {
-#   ping -t 1 -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
+#   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
 # }
 #
 # "$@"
