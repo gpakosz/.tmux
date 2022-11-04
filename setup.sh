@@ -1,9 +1,11 @@
 #!/bin/bash
 
-mkdir -p ~/.installs
+INSTALL_DIR='$HOME/.installs'
 
-TMUX_DIR='~/.installs/tmux-config'
-echo 'install tmux-config in $TMUX_DIR'
+mkdir -p $INSTALL_DIR
+
+TMUX_DIR='$INSTALL_DIR/tmux-config'
+echo 'installing tmux-config in $TMUX_DIR'
 
 git clone git@github.com:chanwutk/tmux-config.git $TMUX_DIR
 
