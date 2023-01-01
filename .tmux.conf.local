@@ -35,14 +35,28 @@ tmux_conf_new_session_prompt=false
 # -- display -------------------------------------------------------------------
 
 # RGB 24-bit colour support, possible values are:
-#  - true
-#  - false
-#  - auto (default)
+#   - true
+#   - false
+#   - auto (default)
 #
 # automatic detection relies on the COLORTERM environment variable being defined
 # to 'truecolor' or '24bit' or '$ tput colors' answering '16777216'
 # see https://github.com/termstandard/colors
 tmux_conf_24b_colour=auto
+
+
+# -- theming -------------------------------------------------------------------
+
+# enable or disable theming:
+#   - enabled (default)
+#   - disabled
+# when disabled, all tmux_conf_theme_xxx variables are ignored except:
+#   - tmux_conf_theme_pairing
+#   - tmux_conf_theme_prefix
+#   - tmux_conf_theme_mouse
+#   - tmux_conf_theme_root
+#   - tmux_conf_theme_synchronized
+tmux_conf_theme=enabled
 
 # default theme
 tmux_conf_theme_colour_1="#080808"    # dark gray
