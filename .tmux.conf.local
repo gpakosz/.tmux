@@ -5,6 +5,15 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
+# -- session creation ----------------------------------------------------------
+
+# prompt for session name when creating a new session, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-session bindings)
+tmux_conf_new_session_prompt=false
+
+
 # -- windows & pane creation ---------------------------------------------------
 
 # new window retains current path, possible values are:
@@ -12,6 +21,12 @@
 #   - false (default)
 #   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_retain_current_path=false
+
+# new window tries to reconnect ssh sessions, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-window bindings)
+tmux_conf_new_window_reconnect_ssh=false
 
 # new pane retains current path, possible values are:
 #   - true (default)
@@ -24,12 +39,6 @@ tmux_conf_new_pane_retain_current_path=true
 #   - false (default)
 #   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_reconnect_ssh=false
-
-# prompt for session name when creating a new session, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-session bindings)
-tmux_conf_new_session_prompt=false
 
 
 # -- display -------------------------------------------------------------------
