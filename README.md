@@ -108,6 +108,18 @@ Troubleshooting
    one, Powerline symbols will be broken.
 
    The alternative is to use the [Mintty terminal for WSL][wsltty].
+ 
+ - **I am using oh-my-zshs [tmux plugin](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/tmux/README.md), default tmux command dosn't load oh-my-tmux**
+   
+   In your `~/.zshrc` file, before the statement `source "$ZSH/oh-my-zsh.sh`. You must tell the plugin the default location.
+   
+   ```zsh
+   ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
+   ZSH_THEME="fino-time"
+   export ZSH="$HOME/.oh-my-zsh"
+   plugins=(tmux)
+   source "$ZSH/oh-my-zsh.sh"
+   ```
 
 [1681]: https://github.com/Microsoft/BashOnWindows/issues/1681
 [wsltty]: https://github.com/mintty/wsltty
