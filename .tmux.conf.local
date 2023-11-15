@@ -370,6 +370,10 @@ tmux_conf_copy_to_os_clipboard=false
 # set -g prefix C-a
 # bind C-a send-prefix
 
+# don't use C-a as a prefix, keep C-b as the only prefix
+# set -gu prefix2
+# unbind C-a
+
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
