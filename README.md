@@ -131,13 +131,14 @@ Features
    on macOS, `xsel`, `xclip`, or `wl-copy` on Linux)
  - support for 4-digit hexadecimal Unicode characters
  - [Facebook PathPicker][] integration if available
- - [Urlview][] integration if available
+ - [Urlscan][] (preferred) or [Urlview][] integration if available
 
 [Powerline]: https://github.com/Lokaltog/powerline
 [maximize-pane]: http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/
 [reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [Facebook PathPicker]: https://facebook.github.io/PathPicker/
 [Urlview]: https://packages.debian.org/stable/misc/urlview
+[Urlscan]: https://github.com/firecat53/urlscan
 
 The "maximize any pane to a new window with `<prefix> +`" feature is different
 from builtin `resize-pane -Z` as it allows you to further split a maximized
@@ -188,8 +189,8 @@ This configuration uses the following bindings:
 
  - `<prefix> m` toggles mouse mode on or off
 
- - `<prefix> U` launches Urlview (if available)
- - `<prefix> F` launches Facebook PathPicker (if available)
+ - `<prefix> U` launches Urlscan (preferred) or Urlview, if available
+ - `<prefix> F` launches Facebook PathPicker, if available
 
  - `<prefix> Enter` enters copy-mode
  - `<prefix> b` lists the paste-buffers
