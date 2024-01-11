@@ -24,14 +24,14 @@ You can install Oh my tmux! at any of the following locations:
 Installing in `~`:
 ```
 $ cd
-$ git clone https://github.com/gpakosz/.tmux.git
+$ git clone https://github.com/ethereal-sheep/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 ```
 
 Installing in `$XDG_CONFIG_HOME/tmux`:
 ```
-$ git clone https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+$ git clone https://github.com/ethereal-sheep/.tmux.git "/path/to/oh-my-tmux"
 $ mkdir -p "$XDG_CONFIG_HOME/tmux"
 $ ln -s "/path/to/oh-my-tmux/.tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
 $ cp "/path/to/oh-my-tmux/.tmux.conf.local" "$XDG_CONFIG_HOME/tmux/tmux.conf.local"
@@ -39,7 +39,7 @@ $ cp "/path/to/oh-my-tmux/.tmux.conf.local" "$XDG_CONFIG_HOME/tmux/tmux.conf.loc
 
 Installing in `~/.config/tmux`:
 ```
-$ git clone https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+$ git clone https://github.com/ethereal-sheep/.tmux.git "/path/to/oh-my-tmux"
 $ mkdir -p "~/.config/tmux"
 $ ln -s "/path/to/oh-my-tmux/.tmux.conf" "~/.config/tmux/tmux.conf"
 $ cp "/path/to/oh-my-tmux/.tmux.conf.local" "~/.config/tmux/tmux.conf.local"
@@ -199,7 +199,7 @@ This configuration uses the following bindings:
 
 Additionally, `copy-mode-vi` matches [my own Vim configuration][]
 
-[my own Vim configuration]: https://github.com/gpakosz/.vim.git
+[my own Vim configuration]: https://github.com/ethereal-sheep/.vim.git
 
 Bindings for `copy-mode-vi`:
 
