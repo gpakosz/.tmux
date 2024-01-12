@@ -429,6 +429,8 @@ tmux_conf_uninstall_plugins_on_reload=true
 # then, use #{foo} in e.g. the 'tmux_conf_theme_status_left' or the
 # 'tmux_conf_theme_status_right' variables.
 
+# ------------------------------------------------------------------------------
+
 # # /!\ do not remove the following line
 # EOF
 #
@@ -445,3 +447,4 @@ tmux_conf_uninstall_plugins_on_reload=true
 #
 # "$@"
 # # /!\ do not remove the previous line
+# #     do not write below this line
