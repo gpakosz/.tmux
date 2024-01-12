@@ -271,9 +271,10 @@ your own preferences.
 This configuration supports the following builtin variables:
 
  - `#{battery_bar}`: horizontal battery charge bar
+ - `#{battery_hbar}`: 1 character wide, horizontal battery charge bar
+ - `#{battery_vbar}`: 1 character wide, vertical battery charge bar
  - `#{battery_percentage}`: battery percentage
  - `#{battery_status}`: is battery charging or discharging?
- - `#{battery_vbar}`: vertical battery charge bar
  - `#{circled_session_name}`: circled session number, up to 20
  - `#{hostname}`: SSH/Mosh aware hostname information
  - `#{hostname_ssh}`: SSH/Mosh aware hostname information, blank when not
