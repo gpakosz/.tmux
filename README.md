@@ -10,7 +10,7 @@ Installation
 
 Requirements:
 
-  - tmux **`>= 2.4`** running inside Linux, Mac, OpenBSD, Cygwin or WSL
+  - tmux **`>= 2.6`** running inside Linux, Mac, OpenBSD, Cygwin or WSL
   - awk, perl and sed
   - outside of tmux, `$TERM` must be set to `xterm-256color`
 
@@ -120,22 +120,18 @@ Features
  - [maximize any pane to a new window with `<prefix> +`][maximize-pane]
  - SSH/Mosh aware username and hostname status line information
  - mouse mode toggle with `<prefix> m`
- - automatic usage of [`reattach-to-user-namespace`][reattach-to-user-namespace]
-   if available
  - laptop battery status line information
  - uptime status line information
  - optional highlight of focused pane
  - configurable new windows and panes behavior (optionally retain current path)
  - SSH/Mosh aware split pane (reconnects to remote server)
- - copy to OS clipboard (needs [`reattach-to-user-namespace`][reattach-to-user-namespace]
-   on macOS, `xsel`, `xclip`, or `wl-copy` on Linux)
+ - copy to OS clipboard (needs `xsel`, `xclip`, or `wl-copy` on Linux)
  - support for 4-digit hexadecimal Unicode characters
  - [Facebook PathPicker][] integration if available
  - [Urlscan][] (preferred) or [Urlview][] integration if available
 
 [Powerline]: https://github.com/Lokaltog/powerline
 [maximize-pane]: http://pempek.net/articles/2013/04/14/maximizing-tmux-pane-new-window/
-[reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [Facebook PathPicker]: https://facebook.github.io/PathPicker/
 [Urlview]: https://packages.debian.org/stable/misc/urlview
 [Urlscan]: https://github.com/firecat53/urlscan
@@ -337,26 +333,6 @@ This configuration now comes with built-in [TPM] support:
 See the sample `.local` customization file for instructions.
 
 [TPM]: https://github.com/tmux-plugins/tpm
-
-### Accessing the macOS clipboard from within tmux sessions (tmux `< 2.6`)
-
-[Chris Johnsen created the `reattach-to-user-namespace`
-utility][reattach-to-user-namespace] that makes `pbcopy` and `pbpaste` work
-again within tmux.
-
-To install `reattach-to-user-namespace`, use either [MacPorts][] or
-[Homebrew][]:
-
-    $ port install tmux-pasteboard
-
-or
-
-    $ brew install reattach-to-user-namespace
-
-Once installed, `reattach-to-usernamespace` will be automatically detected.
-
-[MacPorts]: http://www.macports.org/
-[Homebrew]: http://brew.sh/
 
 ### Using the configuration under Cygwin within Mintty
 
