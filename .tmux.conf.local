@@ -445,6 +445,16 @@ tmux_conf_uninstall_plugins_on_reload=true
 #   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
 # }
 #
+# wan_ip_v4() {
+#   curl -f -s -m 2 -4 ifconfig.me
+#   sleep 300                                         # sleep for 5 minutes, throttle network requests whatever the value of status-interval
+# }
+#
+# wan_ip_v6() {
+#   curl -f -s -m 2 -6 ifconfig.me
+#   sleep 300                                         # sleep for 5 minutes, throttle network requests whatever the value of status-interval
+# }
+#
 # "$@"
 # # /!\ do not remove the previous line
 # #     do not write below this line
