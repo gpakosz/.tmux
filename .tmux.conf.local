@@ -13,6 +13,12 @@
 #   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_prompt=false
 
+# new session retains current path, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-session bindings)
+tmux_conf_new_session_retain_current_path=false
+
 
 # -- windows & pane creation ---------------------------------------------------
 
