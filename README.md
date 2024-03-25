@@ -37,7 +37,7 @@ $ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
 
 Reload the configuration file to see the changes:
 ```
-$ tmux source ~/.tmux.conf
+$ tmux source ~/.tmux.conf.local
 ```
 
 Then proceed to [customize] your `~/.tmux.conf.local` copy.
