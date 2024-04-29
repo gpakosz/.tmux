@@ -11,7 +11,7 @@ Installation
 Requirements:
 
   - tmux **`>= 2.6`** running inside Linux, Mac, OpenBSD, Cygwin or WSL
-  - awk, perl and sed
+  - awk, perl (with Time::HiRes support) and sed
   - outside of tmux, `$TERM` must be set to `xterm-256color`
 
 ⚠️ Before installing, you may want to backup your existing configuration.
