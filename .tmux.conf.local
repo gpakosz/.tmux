@@ -24,6 +24,7 @@
 #   - false (default)
 tmux_conf_preserve_stock_bindings=false
 
+
 # -- session creation ----------------------------------------------------------
 
 # prompt for session name when creating a new session, possible values are:
@@ -38,6 +39,7 @@ tmux_conf_new_session_prompt=false
 #   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_retain_current_path=false
 
+
 # -- windows & pane creation ---------------------------------------------------
 
 # new window retains current path, possible values are:
@@ -46,16 +48,11 @@ tmux_conf_new_session_retain_current_path=false
 #   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_retain_current_path=false
 
-# new pane tries to reconnect ssh sessions (experimental), possible values are:
+# new window tries to reconnect ssh sessions, possible values are:
 #   - true
 #   - false (default)
-#   - disabled (do not modify split-window bindings)
+#   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_reconnect_ssh=false
-
-# prompt for session name when creating a new session, possible values are:
-#   - true
-#   - false (default)
-tmux_conf_new_session_prompt=false
 
 # new pane retains current path, possible values are:
 #   - true (default)
@@ -63,15 +60,10 @@ tmux_conf_new_session_prompt=false
 #   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_retain_current_path=true
 
-# new pane tries to reconnect ssh sessions (experimental), possible values are:
+# new pane tries to reconnect ssh sessions, possible values are:
 #   - true
 #   - false (default)
 tmux_conf_new_pane_reconnect_ssh=false
-
-# prompt for session name when creating a new session, possible values are:
-#   - true
-#   - false (default)
-tmux_conf_new_session_prompt=false
 
 
 # -- display -------------------------------------------------------------------
