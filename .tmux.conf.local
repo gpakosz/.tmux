@@ -5,16 +5,6 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
-# if you"re running tmux within iTerm2
-#   - and tmux is 1.9 or 1.9a
-#   - and iTerm2 is configured to let option key act as +Esc
-#   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
-# then uncomment the following line to make Meta + arrow keys mapping work
-# set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
-
-# set-option -a terminal-overrides ",*256col*:RGB"
-
-
 # -- bindings ------------------------------------------------------------------
 
 # preserve tmux stock bindings,
@@ -414,10 +404,10 @@ tmux_conf_battery_vbar_palette="gradient"
 #tmux_conf_battery_vbar_palette="#d70000,#ff5f00,#5fff00"  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
-tmux_conf_battery_status_charging="↑"       # U+2191
-tmux_conf_battery_status_discharging="↓"    # U+2193
-#tmux_conf_battery_status_charging="🔌"     # U+1F50C
-#tmux_conf_battery_status_discharging="🔋"  # U+1F50B
+# tmux_conf_battery_status_charging="↑"       # U+2191
+# tmux_conf_battery_status_discharging="↓"    # U+2193
+tmux_conf_battery_status_charging="🔌"     # U+1F50C
+tmux_conf_battery_status_discharging="🔋"  # U+1F50B
 
 # clock style (when you hit <prefix> + t)
 # you may want to use %I:%M %p in place of %R in tmux_conf_theme_status_right
@@ -444,28 +434,50 @@ tmux_conf_urlscan_options="--compact --dedupe"
 
 
 # -- user customizations -------------------------------------------------------
+
 # this is the place to override or undo settings
 
-# increase history size
-#set -g history-limit 10000
+set -sg repeat-time 200                   # increase repeat timeout
 
-# start with mouse mode enabled
-#set -g mouse on
+set -g history-limit 3000
 
-set -as terminal-overrides ",xterm*:Tc:sitm=\E[3m"
+# install tmux-256color https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
+set -g default-terminal "tmux-256color"
+# set -as terminal-overrides ",xterm*:Tc:sitm=\E[3m"
 
-# force Vi mode
+# if you"re running tmux within iTerm2
+#   - and tmux is 1.9 or 1.9a
+#   - and iTerm2 is configured to let option key act as +Esc
+#   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
+# then uncomment the following line to make Meta + arrow keys mapping work
+# set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
+
+# set-option -a terminal-overrides ",*256col*:RGB"
+
+
+# force vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 set -g status-keys vi
 set -g mode-keys vi
 set-window-option -g mode-keys vi
 
-# replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+# replace C-b by C-e instead of using both prefixes
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix C-e
+bind C-e send-prefix
+
+bind -n End send-key C-e
+bind -n Home send-key C-a
+
+unbind '"'
+unbind %
+
+set -g status-interval 30
+
+bind '-' split-window -v # -c '#{pane_current_path}'
+bind '\' split-window -h # -c '#{pane_current_path}'
 
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
