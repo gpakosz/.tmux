@@ -437,7 +437,7 @@ tmux_conf_urlscan_options="--compact --dedupe"
 
 # this is the place to override or undo settings
 
-set -sg repeat-time 200                   # increase repeat timeout
+set -sg repeat-time 200
 
 set -g history-limit 3000
 
