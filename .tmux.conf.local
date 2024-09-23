@@ -399,6 +399,21 @@ unbind s # use tmux-sessionx bindings
 bind _ split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
+# Avoid issues with environment loading when using direnv
+#
+# NOTE: this solution will not revert to the original environment
+# if a direnv-managed folder was entered before invoking tmux.
+#
+# ---
+#
+# references:
+#  - https://github.com/direnv/direnv/wiki/Tmux
+set-option -g update-environment "DIRENV_DIFF DIRENV_DIR DIRENV_WATCHES"
+set-environment -gu DIRENV_DIFF
+set-environment -gu DIRENV_DIR
+set-environment -gu DIRENV_WATCHES
+set-environment -gu DIRENV_LAYOUT
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
