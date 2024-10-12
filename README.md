@@ -277,6 +277,8 @@ This configuration supports the following builtin variables:
    connected to a remote server through SSH/Mosh
  - `#{loadavg}`: load average
  - `#{pairing}`: is session attached to more than one client?
+ - `#{pretty_pane_current_path}`: prettified `#{pane_current_path}` when its
+   length is too long
  - `#{prefix}`: is prefix being depressed?
  - `#{root}`: is current user root?
  - `#{synchronized}`: are the panes synchronized?
