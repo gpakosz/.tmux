@@ -393,7 +393,7 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # set -g prefix C-a
 # bind C-a send-prefix
 
-# if you don't want Oh my tmux! to alter a binding, use #!important
+# if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
 # move status line to top
