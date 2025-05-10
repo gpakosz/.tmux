@@ -399,10 +399,10 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # unbind C-a
 # unbind C-b
 # set -g prefix C-a
-# bind C-a send-prefix
+# bind -N 'Alternate prefix' C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
-# bind c new-window -c '#{pane_current_path}' #!important
+# bind -N '' c new-window -c '#{pane_current_path}' #!important
 
 # move status line to top
 #set -g status-position top
