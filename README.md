@@ -70,8 +70,9 @@ file names don't have a leading `.` character.
 you're on your own. Instead, every customization should happen in your
 `.tmux.conf.local` or `tmux.conf.local` customization file copy.**
 
-If you're a Vim user, setting the `EDITOR` environment variable to `vim` will
-enable and further customize the `vi-style` key bindings (see tmux manual).
+If you're a Vim user, setting the `VIUAL` or `EDITOR` environment variable to
+`vim` will enable and further customize the `vi-style` key bindings (see tmux
+manual).
 
 If you're new to tmux, I recommend you to read the [tmux getting started
 guide][getting-started], as well as the [tmux 3: Productive Mouse-Free
@@ -218,7 +219,8 @@ list of key bindings:
 This configuration uses the following bindings:
 
   - `<prefix> e` opens the `.local` customization file copy with the editor
-    defined by the `EDITOR` environment variable (defaults to `vim` when empty)
+    defined by the `VISUAL` or `EDITOR` environment variable (defaults to `vim`
+    when empty)
   - `<prefix> r` reloads the configuration
   - `C-l` clears both the screen **and** the tmux history
 
@@ -276,8 +278,8 @@ If you do, you're on your own.
 Please refer to the sample `.local` customization file to know more about the
 variables that allow you to alter different behaviors. Upon successful
 installation, pressing `<prefix> e` will open your `.local` customization file
-copy with the editor defined by the `EDITOR` environment variable (defaults to
-`vim` when empty).
+copy with the editor defined by the `VISUAL` or `EDITOR` environment variable
+(defaults to `vim` when empty).
 
 ### Enabling the Powerline look
 
