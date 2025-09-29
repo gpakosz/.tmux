@@ -72,14 +72,13 @@ install() {
 
   if [ -d "${XDG_CONFIG_HOME:-$HOME/.config}" ]; then
     mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
-    OH_MY_TMUX_CLONE_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/oh-my-tmux"
     TMUX_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
   else
-    OH_MY_TMUX_CLONE_PATH="$HOME/.tmux"
     TMUX_CONF="$HOME/.tmux.conf"
   fi
   TMUX_CONF_LOCAL="$TMUX_CONF.local"
 
+  OH_MY_TMUX_CLONE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/oh-my-tmux"
   if [ -d "$OH_MY_TMUX_CLONE_PATH" ]; then
     printf '⚠️  %s exists, making a backup\n' "${OH_MY_TMUX_CLONE_PATH/#"$HOME"/'~'}" >&2
     printf '%s → %s\n' "${OH_MY_TMUX_CLONE_PATH/#"$HOME"/'~'}" "${OH_MY_TMUX_CLONE_PATH/#"$HOME"/'~'}.$now" >&2
@@ -97,6 +96,7 @@ install() {
   OH_MY_TMUX_REPOSITORY=${OH_MY_TMUX_REPOSITORY:-https://github.com/gpakosz/.tmux.git}
   printf '⬇️  Cloning Oh my tmux! repository...\n' >&2
   if ! is_true "$DRY_RUN"; then
+    mkdir -p "$(dirname "$OH_MY_TMUX_CLONE_PATH")"
     if ! git clone -q --single-branch "$OH_MY_TMUX_REPOSITORY" "$OH_MY_TMUX_CLONE_PATH"; then
       printf '❌ Failed\n' >&2 && exit 1
     fi
