@@ -160,8 +160,8 @@ if [ -p /dev/stdin ]; then
             *bat*)
               self | LESS='' bat --paging always --file-name install.sh
               ;;
-            *vim*)
-              self | vim -c ':set syntax=tmux' -R -
+            *vim*) # vim, nvim, neovim ... compatible
+              self | ${VISUAL:-${EDITOR}} -c ':set syntax=tmux' -R -
               ;;
             *)
               tput smcup
