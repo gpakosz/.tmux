@@ -151,6 +151,28 @@ Troubleshooting
     `tmux_conf_theme_right_separator_main`
     and `tmux_conf_theme_right_separator_sub` variables.
 
+  - **Warp on macOS prints `3D` or `3C` when pressing `Opt-Left` / `Opt-Right` inside tmux**
+
+    Warp may deliver those key presses as raw xterm sequences that tmux does not
+    fully consume with the default configuration. If you want `Opt-Left` and
+    `Opt-Right` to move by word in your shell, add the following lines to your
+    `.local` customization file copy:
+
+    ```
+    set -s escape-time 50 #!important
+    unbind -n M-Left #!important
+    unbind -n M-Right #!important
+    bind -n M-Left send-keys Escape b #!important
+    bind -n M-Right send-keys Escape f #!important
+    set -s user-keys[0] "\e[1;3D" #!important
+    set -s user-keys[1] "\e[1;3C" #!important
+    bind -n User0 send-keys Escape b #!important
+    bind -n User1 send-keys Escape f #!important
+    ```
+
+    ⚠️ This trades tmux's default `M-Left` / `M-Right` pane resize bindings for
+    shell word movement.
+
 [Powerline]: https://github.com/Lokaltog/powerline
 [Powerline code points]: #enabling-the-powerline-look
 
