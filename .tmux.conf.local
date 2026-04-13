@@ -320,11 +320,18 @@ tmux_conf_theme_clock_style="24"
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
+
+# give all pane shells (and their children like Neovim) pasteboard access
+# reattach-to-user-namespace is macOS-only; on Linux pbcopy/xclip work directly
+if-shell 'command -v reattach-to-user-namespace > /dev/null 2>&1' \
+  'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'
+
+
 
 # increase history size
 set -g history-limit 20000
