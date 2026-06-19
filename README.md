@@ -70,7 +70,7 @@ file names don't have a leading `.` character.
 you're on your own. Instead, every customization should happen in your
 `.tmux.conf.local` or `tmux.conf.local` customization file copy.**
 
-If you're a Vim user, setting the `VIUAL` or `EDITOR` environment variable to
+If you're a Vim user, setting the `VISUAL` or `EDITOR` environment variable to
 `vim` will enable and further customize the `vi-style` key bindings (see tmux
 manual).
 
