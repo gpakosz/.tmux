@@ -1,3 +1,20 @@
+DOCKER_IMAGE ?= oh-my-tmux-test
+
+docker-build:
+	docker build -t $(DOCKER_IMAGE) .
+
+docker-run: docker-build
+	docker run -it $(DOCKER_IMAGE)
+
+docker-smoke: docker-build
+	docker run --name ohmytmux_smoke $(DOCKER_IMAGE) zsh -lc \
+		'echo "SHELL=$$(getent passwd tmuxer | cut -d: -f7)"; tmux -V; \
+		tmux -f /dev/null -L ci new-session -d \; source-file ~/.tmux.conf \; \
+		show-options -g history-limit \; show-options -g mouse \; kill-server' ; \
+	docker container rm ohmytmux_smoke
+
+.PHONY: docker-build docker-run docker-smoke
+
 backup:
 	tar -cjvf backup.tar.gz ~/dev/bossjones/oh-my-tmux/.tmux.conf ~/.tmux.conf.local
 	ls -lta backup.tar.gz

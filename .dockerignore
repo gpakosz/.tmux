@@ -1,0 +1,8 @@
+.git
+.gitignore
+backup.tar.gz
+*.tar.gz
+.claude
+specs
+scratchpad
+README.md
