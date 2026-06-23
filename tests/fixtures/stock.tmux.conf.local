@@ -1,0 +1,23 @@
+# : << 'EOF'
+# Oh my tmux! stock .tmux.conf.local — upstream defaults only.
+#
+# This file is used by tests/test_discriminator.py to prove that live
+# assertions genuinely discriminate between our local deviations and a
+# vanilla upstream config.  It intentionally omits:
+#
+#   - set -g history-limit 20000   (stays at upstream's 5000)
+#   - set -g mouse on              (stays off, the tmux default)
+#   - bind m with display message  (upstream bind m is used instead)
+#   - @plugin declarations         (no TPM plugins)
+#   - #{prefix_highlight} token    (not in status_right)
+#   - tmux_conf_copy_to_os_clipboard=true (stays false)
+#
+# Sentinel fences below are load-bearing for the oh-my-tmux shell parser.
+
+# -- custom variables ----------------------------------------------------------
+
+# # /!\ do not remove the following line
+# EOF
+# "$@"
+# # /!\ do not remove the previous line
+# #     do not write below this line

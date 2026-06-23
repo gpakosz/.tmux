@@ -1,0 +1,26 @@
+[project]
+name = "oh-my-tmux-tests"
+version = "0.1.0"
+requires-python = ">=3.9"
+description = "TDD contract tests for the bossjones/.tmux oh-my-tmux configuration"
+readme = "README.md"
+license = { text = "MIT" }
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "libtmux>=0.30",
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.uv]
+# This is a test-only project; don't install it as a Python package.
+package = false
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

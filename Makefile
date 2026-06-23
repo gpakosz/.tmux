@@ -13,7 +13,12 @@ docker-smoke: docker-build
 		show-options -g history-limit \; show-options -g mouse \; kill-server' ; \
 	docker container rm ohmytmux_smoke
 
-.PHONY: docker-build docker-run docker-smoke
+# Run the libtmux TDD contract test suite (requires uv and tmux >= 2.6 on PATH).
+# Install dependencies first: uv sync --group dev
+test:
+	uv run pytest -q
+
+.PHONY: docker-build docker-run docker-smoke test
 
 backup:
 	tar -cjvf backup.tar.gz ~/dev/bossjones/oh-my-tmux/.tmux.conf ~/.tmux.conf.local

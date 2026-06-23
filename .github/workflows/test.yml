@@ -1,0 +1,41 @@
+name: Test tmux config contracts
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install tmux
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tmux
+          tmux -V  # log the installed version (upstream requires >= 2.6)
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Install Python via uv
+        run: uv python install
+
+      - name: Install test dependencies
+        run: uv sync --group dev
+
+      - name: Run TDD contract test suite
+        run: uv run pytest -q
+        env:
+          # Ensure tests run in a clean HOME-independent environment.
+          # Each test creates its own temp HOME via conftest fixtures.
+          TMUX: ""
+          TMUX_CONF: ""
+          TMUX_CONF_LOCAL: ""
