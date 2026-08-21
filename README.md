@@ -407,6 +407,42 @@ tmux_conf_theme_status_right='#(echo foo %% bar)'
 ```
 See also `man 3 strftime`.
 
+### Using the theme switcher
+
+Oh my tmux! ships with ready-made colour themes that you can switch between
+live, without reloading your configuration.
+
+The following themes are included (in `~/.tmux/themes/`):
+
+  - `catppuccin` · `default` · `dracula` · `gruvbox` · `nord`
+  - `one-dark` · `peach-pink` · `solarized` · `tokyo-night`
+
+The active theme is recorded in `~/.tmux/themes/active` and applied on start up.
+With no active theme, the framework's built-in defaults are used.
+
+Switch themes in two ways:
+
+  - press `<prefix> T` to open a live-preview picker — `Up`/`Down` preview
+    colours instantly, `Enter` keeps the highlighted theme and `q` reverts
+  - click the right-hand status section (the `🎨 <theme>` indicator) to open the
+    same picker
+
+You can also drive it from the command line:
+
+```
+sh ~/.tmux/tmux-theme.sh list          # list available themes (* = active)
+sh ~/.tmux/tmux-theme.sh current       # print the active theme
+sh ~/.tmux/tmux-theme.sh apply <name>  # activate a theme straight away
+sh ~/.tmux/tmux-theme.sh next          # cycle to the next theme
+sh ~/.tmux/tmux-theme.sh menu          # tmux display-menu picker
+```
+
+To add your own theme, drop a `<name>.tmux-theme` file in `~/.tmux/themes/`
+that sets the `tmux_conf_theme_*` variables (copy an existing theme as a
+starting point). Themes use the same `tmux_conf_theme_colour_1..17`,
+`tmux_conf_theme_window_bg` and `tmux_conf_theme_focused_pane_bg` variables as
+the `.local` customization file.
+
 ### Using TPM plugins
 
 This configuration comes with built-in [TPM] support:
