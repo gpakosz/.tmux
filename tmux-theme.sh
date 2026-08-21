@@ -23,10 +23,26 @@
 
 set -u
 
-THEMES_DIR="${TMUX_THEMES_DIR:-$HOME/.tmux/themes}"
+# resolve the repository root — works for any install layout:
+#   1. TMUX_THEME_ROOT: set by the .local startup `run` line under tmux
+#   2. TMUX_CONF (symlink to <root>/.tmux.conf): set by the framework
+#   3. the script's own location as a last resort
+if [ -n "${TMUX_THEME_ROOT:-}" ]; then
+    ROOT="${TMUX_THEME_ROOT}"
+elif [ -n "${TMUX_CONF:-}" ]; then
+    root_conf="$TMUX_CONF"
+    root_target="$(readlink "$root_conf" 2>/dev/null)"
+    [ -z "$root_target" ] && root_target="$root_conf"
+    [ "${root_target:0:1}" != "/" ] && root_target="$(dirname "$root_conf")/$root_target"
+    ROOT="$(dirname "$root_target")"
+else
+    ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+fi
+
+THEMES_DIR="${TMUX_THEMES_DIR:-$ROOT/themes}"
 ACTIVE_FILE="$THEMES_DIR/active"
-TMUX_CONF="${TMUX_CONF:-$HOME/.tmux/.tmux.conf}"
-TMUX_CONF_LOCAL="${TMUX_CONF_LOCAL:-$HOME/.tmux/.tmux.conf.local}"
+TMUX_CONF="${TMUX_CONF:-$ROOT/.tmux.conf}"
+TMUX_CONF_LOCAL="${TMUX_CONF_LOCAL:-$ROOT/.tmux.conf.local}"
 LOCK_DIR="${TMPDIR:-/tmp}/.tmux-theme.lock"
 
 themes() { # names, space-separated, alphabetical
@@ -140,9 +156,9 @@ menu() {
     set --
     for t in $(themes); do
         if [ "$t" = "$cur" ]; then label="* $t"; else label="  $t"; fi
-        set -- "$@" "$label" "" "run 'sh $HOME/.tmux/tmux-theme.sh apply $t'"
+        set -- "$@" "$label" "" "run 'sh $TMUX_THEME_ROOT/tmux-theme.sh apply $t'"
     done
-    set -- "$@" "→ next theme" "" "run 'sh $HOME/.tmux/tmux-theme.sh next'"
+    set -- "$@" "→ next theme" "" "run 'sh $TMUX_THEME_ROOT/tmux-theme.sh next'"
     tmux display-menu -T " tmux theme — pick one, Esc to close " "$@"
 }
 
@@ -572,8 +588,8 @@ inject_config() { # idempotently manage the marked block in $TMUX_CONF_LOCAL
     cat >> "$tmp" <<'TMUXTHEME'
 
 # >>> tmux-theme (auto) >>>
-run 'theme=$(cat "$HOME/.tmux/themes/active" 2>/dev/null); if [ -n "$theme" ] && [ -f "$HOME/.tmux/themes/$theme.tmux-theme" ]; then tmux source-file "$HOME/.tmux/themes/$theme.tmux-theme"; fi'
-bind T popup -E -w 34 -h 17 -T ' tmux theme ' 'sh "$HOME/.tmux/tmux-theme.sh" pick'
+run 'd="$TMUX_CONF"; t="$(readlink "$d" 2>/dev/null)"; [ -z "$t" ] && t="$d"; [ "${t:0:1}" != "/" ] && t="$(dirname "$d")/$t"; root="$(dirname "$t")"; tmux set-environment -g TMUX_THEME_ROOT "$root"; theme="$(cat "$root/themes/active" 2>/dev/null)"; [ -n "$theme" ] && [ -f "$root/themes/$theme.tmux-theme" ] && tmux source-file "$root/themes/$theme.tmux-theme"'
+bind T popup -E -w 34 -h 17 -T ' tmux theme ' 'sh "$TMUX_THEME_ROOT/tmux-theme.sh" pick'
 # <<< tmux-theme (auto) <<<
 TMUXTHEME
     mv "$tmp" "$conf"
@@ -584,7 +600,7 @@ install() { # self-install: themes + config block + script copy; then apply if a
     [ -f "$ACTIVE_FILE" ] || printf 'default
 ' > "$ACTIVE_FILE"
     self="$(self_path)"
-    target="$HOME/.tmux/tmux-theme.sh"
+    target="$ROOT/tmux-theme.sh"
     if [ "$self" != "$target" ]; then
         cp "$self" "$target" 2>/dev/null && chmod +x "$target" 2>/dev/null
     fi

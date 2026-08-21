@@ -412,13 +412,15 @@ See also `man 3 strftime`.
 Oh my tmux! ships with ready-made colour themes that you can switch between
 live, without reloading your configuration.
 
-The following themes are included (in `~/.tmux/themes/`):
+The following themes are included in the `themes/` directory of the clone
+(`TMUX_THEME_ROOT`, e.g. `~/.local/share/tmux/oh-my-tmux/themes` or
+`~/.tmux/themes`):
 
   - `catppuccin` · `default` · `dracula` · `gruvbox` · `nord`
   - `one-dark` · `peach-pink` · `solarized` · `tokyo-night`
 
-The active theme is recorded in `~/.tmux/themes/active` and applied on start up.
-With no active theme, the framework's built-in defaults are used.
+The active theme is recorded in `themes/active` and applied on start up. With
+no active theme, the framework's built-in defaults are used.
 
 Switch themes in two ways:
 
@@ -427,19 +429,20 @@ Switch themes in two ways:
   - click the right-hand status section (the `🎨 <theme>` indicator) to open the
     same picker
 
-You can also drive it from the command line:
+You can also drive it from the command line (`tmux-theme.sh` lives in the clone
+root):
 
 ```
-sh ~/.tmux/tmux-theme.sh list          # list available themes (* = active)
-sh ~/.tmux/tmux-theme.sh current       # print the active theme
-sh ~/.tmux/tmux-theme.sh apply <name>  # activate a theme straight away
-sh ~/.tmux/tmux-theme.sh next          # cycle to the next theme
-sh ~/.tmux/tmux-theme.sh menu          # tmux display-menu picker
+sh "$TMUX_THEME_ROOT/tmux-theme.sh" list          # available themes (* = active)
+sh "$TMUX_THEME_ROOT/tmux-theme.sh" current       # print the active theme
+sh "$TMUX_THEME_ROOT/tmux-theme.sh" apply <name>  # activate a theme straight away
+sh "$TMUX_THEME_ROOT/tmux-theme.sh" next          # cycle to the next theme
+sh "$TMUX_THEME_ROOT/tmux-theme.sh" menu          # tmux display-menu picker
 ```
 
-To add your own theme, drop a `<name>.tmux-theme` file in `~/.tmux/themes/`
-that sets the `tmux_conf_theme_*` variables (copy an existing theme as a
-starting point). Themes use the same `tmux_conf_theme_colour_1..17`,
+To add your own theme, drop a `<name>.tmux-theme` file in the `themes/`
+directory that sets the `tmux_conf_theme_*` variables (copy an existing theme
+as a starting point). Themes use the same `tmux_conf_theme_colour_1..17`,
 `tmux_conf_theme_window_bg` and `tmux_conf_theme_focused_pane_bg` variables as
 the `.local` customization file.
 
