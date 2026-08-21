@@ -85,47 +85,16 @@ tmux_conf_24b_colour=auto
 #   - tmux_conf_theme_synchronized
 tmux_conf_theme=enabled
 
-# default theme
-tmux_conf_theme_colour_1="#080808"    # dark gray
-tmux_conf_theme_colour_2="#303030"    # gray
-tmux_conf_theme_colour_3="#8a8a8a"    # light gray
-tmux_conf_theme_colour_4="#00afff"    # light blue
-tmux_conf_theme_colour_5="#ffff00"    # yellow
-tmux_conf_theme_colour_6="#080808"    # dark gray
-tmux_conf_theme_colour_7="#e4e4e4"    # white
-tmux_conf_theme_colour_8="#080808"    # dark gray
-tmux_conf_theme_colour_9="#ffff00"    # yellow
-tmux_conf_theme_colour_10="#ff00af"   # pink
-tmux_conf_theme_colour_11="#5fff00"   # green
-tmux_conf_theme_colour_12="#8a8a8a"   # light gray
-tmux_conf_theme_colour_13="#e4e4e4"   # white
-tmux_conf_theme_colour_14="#080808"   # dark gray
-tmux_conf_theme_colour_15="#080808"   # dark gray
-tmux_conf_theme_colour_16="#d70000"   # red
-tmux_conf_theme_colour_17="#e4e4e4"   # white
-
-# default theme (ansi)
-#tmux_conf_theme_colour_1="colour0"
-#tmux_conf_theme_colour_2="colour8"
-#tmux_conf_theme_colour_3="colour8"
-#tmux_conf_theme_colour_4="colour14"
-#tmux_conf_theme_colour_5="colour11"
-#tmux_conf_theme_colour_6="colour0"
-#tmux_conf_theme_colour_7="colour15"
-#tmux_conf_theme_colour_8="colour0"
-#tmux_conf_theme_colour_9="colour11"
-#tmux_conf_theme_colour_10="colour13"
-#tmux_conf_theme_colour_11="colour10"
-#tmux_conf_theme_colour_12="colour8"
-#tmux_conf_theme_colour_13="colour15"
-#tmux_conf_theme_colour_14="colour0"
-#tmux_conf_theme_colour_15="colour0"
-#tmux_conf_theme_colour_16="colour1"
-#tmux_conf_theme_colour_17="colour15"
+# active theme: loaded from ~/.tmux/themes/<name>.tmux-theme
+#   - switch at runtime: <prefix> T (live-preview picker)
+#   - or: sh ~/.tmux/tmux-theme.sh apply <name>
+#   - add your own: drop a new <name>.tmux-theme file in ~/.tmux/themes/
+# when no active theme is set, the framework's built-in defaults apply
+run 'theme=$(cat "$HOME/.tmux/themes/active" 2>/dev/null); if [ -n "$theme" ] && [ -f "$HOME/.tmux/themes/$theme.tmux-theme" ]; then tmux source-file "$HOME/.tmux/themes/$theme.tmux-theme"; fi'
 
 # window style
+# (window_bg / focused_pane_bg live in each theme file now)
 tmux_conf_theme_window_fg="default"
-tmux_conf_theme_window_bg="default"
 
 # highlight focused pane, possible values are:
 #   - true
@@ -134,7 +103,6 @@ tmux_conf_theme_highlight_focused_pane=false
 
 # focused pane colours:
 tmux_conf_theme_focused_pane_fg="default"
-tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
 
 # pane border style, possible values are:
 #   - thin (default)
@@ -276,7 +244,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #{pretty_pane_current_path} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #(cat $HOME/.tmux/themes/active 2>/dev/null | sed 's/.*/🎨 &/') "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -402,8 +370,19 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # increase history size
 #set -g history-limit 10000
 
-# start with mouse mode enabled
-#set -g mouse on
+# start with mouse mode enabled (required for status-bar & popup mouse clicks)
+set -g mouse on
+
+# theme switching — one key: <prefix> T opens the live-preview picker
+# (up/down preview colours instantly, enter keeps it, q reverts)
+bind T popup -E -w 34 -h 17 -T ' tmux theme ' 'sh "$HOME/.tmux/tmux-theme.sh" pick'
+
+# theme switching — mouse: click the right status section (🎨 <theme>) to open
+# the same picker. tmux can only target the whole right section, not the 🎨
+# glyph itself, so any click on the right side opens the picker.
+# NOTE: must be bound in the ROOT table — status-line mouse events are looked
+# up in the root table, and a root-table binding wins over the status table.
+bind -T root MouseDown1StatusRight popup -E -w 34 -h 17 -T ' tmux theme ' 'sh "$HOME/.tmux/tmux-theme.sh" pick'
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual

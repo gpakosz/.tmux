@@ -1,0 +1,25 @@
+# tokyo night — https://github.com/folke/tokyonight.nvim
+#
+# slot map:
+#   1=status-bg  2=pane-border  3=muted-text  4=accent  5=highlight
+#   6,7,8=status-left fg   9,10,11=status-left bg
+#   12,13,14=status-right fg   15,16,17=status-right bg
+tmux_conf_theme_colour_1="#1a1b26"    # bg
+tmux_conf_theme_colour_2="#292e42"    # bg_starpurple
+tmux_conf_theme_colour_3="#565f89"    # comment
+tmux_conf_theme_colour_4="#7aa2f7"    # blue
+tmux_conf_theme_colour_5="#e0af68"    # yellow
+tmux_conf_theme_colour_6="#1a1b26"
+tmux_conf_theme_colour_7="#c0caf5"    # fg
+tmux_conf_theme_colour_8="#1a1b26"
+tmux_conf_theme_colour_9="#bb9af7"    # purple
+tmux_conf_theme_colour_10="#7aa2f7"   # blue
+tmux_conf_theme_colour_11="#9ece6a"   # green
+tmux_conf_theme_colour_12="#565f89"
+tmux_conf_theme_colour_13="#c0caf5"
+tmux_conf_theme_colour_14="#c0caf5"
+tmux_conf_theme_colour_15="#1a1b26"
+tmux_conf_theme_colour_16="#f7768e"   # red
+tmux_conf_theme_colour_17="#292e42"
+tmux_conf_theme_window_bg="#1a1b26"
+tmux_conf_theme_focused_pane_bg="#16161e"

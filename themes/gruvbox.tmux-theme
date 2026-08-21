@@ -1,0 +1,25 @@
+# gruvbox dark — https://github.com/morhetz/gruvbox
+#
+# slot map:
+#   1=status-bg  2=pane-border  3=muted-text  4=accent  5=highlight
+#   6,7,8=status-left fg   9,10,11=status-left bg
+#   12,13,14=status-right fg   15,16,17=status-right bg
+tmux_conf_theme_colour_1="#282828"    # bg0
+tmux_conf_theme_colour_2="#504945"    # neutral
+tmux_conf_theme_colour_3="#a89984"    # gray
+tmux_conf_theme_colour_4="#fabd2f"    # yellow
+tmux_conf_theme_colour_5="#fabd2f"    # yellow
+tmux_conf_theme_colour_6="#282828"
+tmux_conf_theme_colour_7="#ebdbb2"    # fg
+tmux_conf_theme_colour_8="#282828"
+tmux_conf_theme_colour_9="#fabd2f"    # yellow
+tmux_conf_theme_colour_10="#458588"   # blue
+tmux_conf_theme_colour_11="#98971a"   # green
+tmux_conf_theme_colour_12="#a89984"
+tmux_conf_theme_colour_13="#ebdbb2"
+tmux_conf_theme_colour_14="#ebdbb2"
+tmux_conf_theme_colour_15="#282828"
+tmux_conf_theme_colour_16="#cc241d"   # red
+tmux_conf_theme_colour_17="#504945"
+tmux_conf_theme_window_bg="#282828"
+tmux_conf_theme_focused_pane_bg="#1d2021"

@@ -1,0 +1,25 @@
+# nord — https://www.nordtheme.com
+#
+# slot map:
+#   1=status-bg  2=pane-border  3=muted-text  4=accent  5=highlight
+#   6,7,8=status-left fg   9,10,11=status-left bg
+#   12,13,14=status-right fg   15,16,17=status-right bg
+tmux_conf_theme_colour_1="#2e3440"    # nord0
+tmux_conf_theme_colour_2="#434c5e"    # nord4-ish
+tmux_conf_theme_colour_3="#7b88a1"    # muted
+tmux_conf_theme_colour_4="#88c0d0"    # nord9 frost
+tmux_conf_theme_colour_5="#ebcb8b"    # nord14
+tmux_conf_theme_colour_6="#2e3440"
+tmux_conf_theme_colour_7="#eceff4"    # nord6 snow
+tmux_conf_theme_colour_8="#2e3440"
+tmux_conf_theme_colour_9="#88c0d0"    # nord9
+tmux_conf_theme_colour_10="#b48ead"   # nord13
+tmux_conf_theme_colour_11="#a3be8c"   # nord14 green
+tmux_conf_theme_colour_12="#7b88a1"
+tmux_conf_theme_colour_13="#eceff4"
+tmux_conf_theme_colour_14="#eceff4"
+tmux_conf_theme_colour_15="#2e3440"
+tmux_conf_theme_colour_16="#bf616a"   # nord11 red
+tmux_conf_theme_colour_17="#3b4252"   # nord3
+tmux_conf_theme_window_bg="#2e3440"
+tmux_conf_theme_focused_pane_bg="#272c36"
