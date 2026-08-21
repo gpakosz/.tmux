@@ -63,13 +63,20 @@ install() {
 
   printf '\n' >&2
   OH_MY_TMUX_REPOSITORY=${OH_MY_TMUX_REPOSITORY:-https://github.com/gpakosz/.tmux.git}
+  OH_MY_TMUX_BRANCH=${OH_MY_TMUX_BRANCH:-}
   printf '⬇️ Cloning Oh my tmux! repository...\n' >&2
   if ! is_true "$DRY_RUN"; then
     mkdir -p "$(dirname "$OH_MY_TMUX_CLONE_PATH")"
     rm -rf "$OH_MY_TMUX_CLONE_PATH.new"
     trap 'rm -rf "$OH_MY_TMUX_CLONE_PATH.new"' EXIT
-    if ! git clone -q --single-branch "$OH_MY_TMUX_REPOSITORY" "$OH_MY_TMUX_CLONE_PATH.new"; then
-      printf '❌ Failed to clone Oh my tmux! repository\n' >&2 && exit 1
+    if [ -n "$OH_MY_TMUX_BRANCH" ]; then
+      if ! git clone -q --single-branch -b "$OH_MY_TMUX_BRANCH" "$OH_MY_TMUX_REPOSITORY" "$OH_MY_TMUX_CLONE_PATH.new"; then
+        printf '❌ Failed to clone Oh my tmux! repository (branch: %s)\n' "$OH_MY_TMUX_BRANCH" >&2 && exit 1
+      fi
+    else
+      if ! git clone -q --single-branch "$OH_MY_TMUX_REPOSITORY" "$OH_MY_TMUX_CLONE_PATH.new"; then
+        printf '❌ Failed to clone Oh my tmux! repository\n' >&2 && exit 1
+      fi
     fi
   fi
 
